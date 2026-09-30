@@ -258,7 +258,44 @@
 
             line-height: 1;
         }
+/* =========================
+   GROUP ACTIONS
+========================= */
 
+.group-actions {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+}
+
+.group-actions button {
+    width: 36px;
+    height: 36px;
+    border: 1px solid #E1E5E7;
+    border-radius: 10px;
+    background: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    cursor: pointer;
+    transition:
+        background 0.15s ease,
+        transform 0.15s ease;
+}
+
+.group-actions button:hover {
+    background: #F3F5F6;
+    transform: translateY(-1px);
+}
+
+.edit-btn {
+    color: #167C78;
+}
+
+.delete-btn {
+    color: #B44A4A;
+}
 
         /* =========================
            ADD BUTTON
