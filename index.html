@@ -808,7 +808,10 @@
 
     <script> const SUPABASE_URL = "https://ccgsbwzdnagrjttuwdwo.supabase.co";
 const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_x0hztESOV7ohYyqaFzks2g_7ee-N8xE";
-
+console.log(
+    "Мій Telegram ID:",
+    window.Telegram?.WebApp?.initDataUnsafe?.user?.id
+);
 const db = window.supabase.createClient(
   SUPABASE_URL,
   SUPABASE_PUBLISHABLE_KEY
