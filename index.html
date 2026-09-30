@@ -781,7 +781,38 @@ const db = window.supabase.createClient(
 
 
         /* OPEN MODAL */
+async function loadGroups() {
+  const { data, error } = await db
+    .from("groups")
+    .select("id, name, description, telegram_link")
+    .order("created_at", { ascending: true });
 
+  if (error) {
+    console.error(error);
+    return;
+  }
+
+  const groups = document.getElementById("groups");
+  groups.innerHTML = "";
+
+  data.forEach(group => {
+    groups.innerHTML += `
+      <a class="group"
+         href="${group.telegram_link}"
+         target="_blank"
+         rel="noopener noreferrer">
+        <div class="group-icon">👥</div>
+        <div class="group-info">
+          <div class="name">${escapeHTML(group.name)}</div>
+          <div class="description">${escapeHTML(group.description)}</div>
+        </div>
+        <div class="arrow">›</div>
+      </a>
+    `;
+  });
+}
+
+loadGroups();
         function showAddForm() {
 
             document
