@@ -874,141 +874,80 @@ loadGroups();
 
         /* ADD NEW GROUP */
 
-        function addGroup() {
+async function addGroup() {
+
+    const name =
+        document
+        .getElementById("groupName")
+        .value
+        .trim();
+
+    const description =
+        document
+        .getElementById("groupDescription")
+        .value
+        .trim();
+
+    const link =
+        document
+        .getElementById("groupLink")
+        .value
+        .trim();
 
 
-            const name =
-                document
-                .getElementById("groupName")
-                .value
-                .trim();
+    /* CHECK NAME */
+
+    if (!name) {
+        alert("Вкажіть назву групи.");
+        return;
+    }
 
 
-            const description =
-                document
-                .getElementById("groupDescription")
-                .value
-                .trim();
+    /* CHECK LINK */
+
+    if (!link) {
+        alert("Вкажіть посилання на Telegram-групу.");
+        return;
+    }
 
 
-            const link =
-                document
-                .getElementById("groupLink")
-                .value
-                .trim();
+    /* CHECK TELEGRAM LINK */
+
+    if (!link.startsWith("https://t.me/")) {
+        alert(
+            "Посилання має починатися з https://t.me/"
+        );
+        return;
+    }
 
 
+    /* SAVE TO SUPABASE */
 
-            /* CHECK NAME */
-
-            if (!name) {
-
-                alert(
-                    "Вкажіть назву групи."
-                );
-
-                return;
-
-            }
+    const { error } = await db
+        .from("groups")
+        .insert({
+            name: name,
+            description: description || "Навчальна група",
+            telegram_link: link
+        });
 
 
-
-            /* CHECK LINK */
-
-            if (!link) {
-
-                alert(
-                    "Вкажіть посилання на Telegram-групу."
-                );
-
-                return;
-
-            }
+    if (error) {
+        console.error(error);
+        alert("Не вдалося додати групу.");
+        return;
+    }
 
 
+    /* RELOAD GROUPS */
 
-            /* CHECK TELEGRAM LINK */
-
-            if (
-                !link.startsWith(
-                    "https://t.me/"
-                )
-            ) {
-
-                alert(
-                    "Посилання має починатися з https://t.me/"
-                );
-
-                return;
-
-            }
+    await loadGroups();
 
 
+    /* CLOSE */
 
-            /* CREATE GROUP */
-
-            const group =
-                document.createElement("a");
-
-
-            group.className = "group";
-
-
-            group.href = link;
-
-
-            group.target = "_blank";
-
-
-            group.rel =
-                "noopener noreferrer";
-
-
-
-            group.innerHTML = `
-
-                <div class="group-icon">
-                    👥
-                </div>
-
-
-                <div class="group-info">
-
-                    <div class="name">
-                        ${escapeHTML(name)}
-                    </div>
-
-                    <div class="description">
-                        ${
-                            escapeHTML(
-                                description ||
-                                "Навчальна група"
-                            )
-                        }
-                    </div>
-
-                </div>
-
-
-                <div class="arrow">
-                    ›
-                </div>
-
-            `;
-
-
-
-            /* ADD TO LIST */
-
-            document
-                .getElementById("groups")
-                .appendChild(group);
-
-
-
-            /* CLOSE */
-
-            closeForm();
+    closeForm();
+}
 
         }
 
