@@ -1,42 +1,71 @@
-<input class="search" type="text" placeholder="🔎  Знайти групу..." oninput="searchGroups(this.value)"
-<a
-  class="group"
-  href="#"
-  onclick="openGroup(event)"
-  data-name="Група 11"
->
-  <div class="icon">👥</div>
+group.rel =
+            "noopener noreferrer";
 
-  <div class="info">
-    <div class="name">Група 11</div>
-    <div class="description">
-      Перепідготовка парамедиків
-    </div>
-  </div>
 
-  <div class="arrow">›</div>
-</a>
-<h2>Додати групу</h2>
 
-<label>Назва групи</label>
-<input id="groupName" placeholder="Наприклад: Група 12">
+        group.innerHTML = `
 
-<label>Опис</label>
-<input
-  id="groupDescription"
-  placeholder="Перепідготовка парамедиків"
->
+            <div class="group-icon">
+                👥
+            </div>
 
-<label>Посилання на Telegram-групу</label>
-<input
-  id="groupLink"
-  placeholder="https://t.me/..."
->
 
-<button class="save" onclick="addGroup()">
-  Додати групу
-</button>
+            <div class="group-info">
 
-<button class="cancel" onclick="closeForm()">
-  Скасувати
-</button>
+                <div class="name">
+                    ${escapeHTML(name)}
+                </div>
+
+                <div class="description">
+                    ${
+                        escapeHTML(
+                            description ||
+                            "Навчальна група"
+                        )
+                    }
+                </div>
+
+            </div>
+
+
+            <div class="arrow">
+                ›
+            </div>
+
+        `;
+
+
+
+        /* ADD TO LIST */
+
+        document
+            .getElementById("groups")
+            .appendChild(group);
+
+
+
+        /* CLOSE */
+
+        closeForm();
+
+    }
+
+
+
+    /* PROTECT HTML */
+
+    function escapeHTML(text) {
+
+        const div =
+            document.createElement("div");
+
+
+        div.textContent = text;
+
+
+        return div.innerHTML;
+
+    }
+
+
+</script>
