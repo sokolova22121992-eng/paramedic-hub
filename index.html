@@ -1,13 +1,42 @@
-<a class="group" href="#" onclick="openGroup1()">
-  <span class="group-title">👥 Група 1</span>
-  <span class="arrow">›</span>
-</a>
+<input class="search" type="text" placeholder="🔎  Знайти групу..." oninput="searchGroups(this.value)"
+<a
+  class="group"
+  href="#"
+  onclick="openGroup(event)"
+  data-name="Група 11"
+>
+  <div class="icon">👥</div>
 
-<a class="group" href="#">
-  <span class="group-title">👥 Група 2</span>
-  <span class="arrow">›</span>
-</a>
+  <div class="info">
+    <div class="name">Група 11</div>
+    <div class="description">
+      Перепідготовка парамедиків
+    </div>
+  </div>
 
-<button class="add" onclick="addGroup()">
-  ➕ Додати групу
+  <div class="arrow">›</div>
+</a>
+<h2>Додати групу</h2>
+
+<label>Назва групи</label>
+<input id="groupName" placeholder="Наприклад: Група 12">
+
+<label>Опис</label>
+<input
+  id="groupDescription"
+  placeholder="Перепідготовка парамедиків"
+>
+
+<label>Посилання на Telegram-групу</label>
+<input
+  id="groupLink"
+  placeholder="https://t.me/..."
+>
+
+<button class="save" onclick="addGroup()">
+  Додати групу
+</button>
+
+<button class="cancel" onclick="closeForm()">
+  Скасувати
 </button>
