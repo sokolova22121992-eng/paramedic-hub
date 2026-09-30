@@ -1,257 +1,1001 @@
 <!DOCTYPE html>
 <html lang="uk">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Мої групи</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    <meta charset="UTF-8">
 
-    body {
-      font-family: Arial, sans-serif;
-      background: #f2f4f5;
-      color: #222;
-      min-height: 100vh;
-      padding: 20px;
-    }
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-    .container {
-      max-width: 600px;
-      margin: 0 auto;
-    }
+    <title>PARAMEDIC HUB</title>
 
-    h1 {
-      text-align: center;
-      margin-bottom: 24px;
-      font-size: 28px;
-    }
 
-    .groups {
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-    }
+    <style>
 
-    .group-card {
-      background: white;
-      border-radius: 16px;
-      padding: 20px;
-      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.06);
-      cursor: pointer;
-      transition: 0.2s;
-    }
+        * {
+            box-sizing: border-box;
+        }
 
-    .group-card:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
-    }
 
-    .group-title {
-      font-size: 20px;
-      font-weight: bold;
-      margin-bottom: 6px;
-    }
+        body {
 
-    .group-info {
-      color: #777;
-      font-size: 14px;
-    }
+            margin: 0;
 
-    .add-button {
-      display: block;
-      margin: 24px auto 0;
-      border: none;
-      background: #16b8b0;
-      color: white;
-      font-size: 17px;
-      font-weight: bold;
-      padding: 14px 24px;
-      border-radius: 12px;
-      cursor: pointer;
-      transition: 0.2s;
-    }
+            font-family:
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                Roboto,
+                Arial,
+                sans-serif;
 
-    .add-button:hover {
-      background: #119e98;
-    }
+            background: #F5F6F7;
 
-    .form-card {
-      display: none;
-      background: white;
-      border-radius: 16px;
-      padding: 20px;
-      margin-top: 20px;
-      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.06);
-    }
+            color: #20252A;
+        }
 
-    .form-card.active {
-      display: block;
-    }
 
-    .form-card h2 {
-      margin-bottom: 18px;
-      font-size: 22px;
-    }
+        /* =========================
+           MAIN CONTAINER
+        ========================= */
 
-    label {
-      display: block;
-      margin-bottom: 7px;
-      font-weight: bold;
-    }
+        .container {
 
-    input {
-      width: 100%;
-      padding: 13px;
-      border: 1px solid #ddd;
-      border-radius: 10px;
-      font-size: 16px;
-      margin-bottom: 14px;
-      outline: none;
-    }
+            width: 100%;
 
-    input:focus {
-      border-color: #16b8b0;
-    }
+            max-width: 760px;
 
-    .form-buttons {
-      display: flex;
-      gap: 10px;
-    }
+            margin: 0 auto;
 
-    .save-button,
-    .cancel-button {
-      flex: 1;
-      border: none;
-      padding: 13px;
-      border-radius: 10px;
-      font-size: 16px;
-      cursor: pointer;
-    }
+            padding:
+                32px
+                18px
+                50px;
+        }
 
-    .save-button {
-      background: #16b8b0;
-      color: white;
-    }
 
-    .cancel-button {
-      background: #e9ecef;
-      color: #333;
-    }
+        /* =========================
+           HEADER
+        ========================= */
 
-    @media (max-width: 480px) {
-      body {
-        padding: 14px;
-      }
+        .header {
 
-      h1 {
-        font-size: 24px;
-      }
+            margin-bottom: 32px;
+        }
 
-      .group-card {
-        padding: 17px;
-      }
-    }
-  </style>
+
+        .logo {
+
+            font-size: 14px;
+
+            font-weight: 800;
+
+            letter-spacing: 2.5px;
+
+            color: #167C78;
+
+            margin-bottom: 4px;
+        }
+
+
+        h1 {
+
+            margin: 0;
+
+            font-size: 38px;
+
+            line-height: 1;
+
+            font-weight: 800;
+
+            letter-spacing: -1.5px;
+        }
+
+
+        .subtitle {
+
+            margin-top: 10px;
+
+            font-size: 14px;
+
+            color: #7A838B;
+        }
+
+
+        /* =========================
+           SECTION
+        ========================= */
+
+        .section-title {
+
+            margin-bottom: 12px;
+
+            font-size: 12px;
+
+            font-weight: 800;
+
+            letter-spacing: 1px;
+
+            text-transform: uppercase;
+
+            color: #7A838B;
+        }
+
+
+        /* =========================
+           GROUP LIST
+        ========================= */
+
+        .groups {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 10px;
+        }
+
+
+        /* =========================
+           GROUP CARD
+        ========================= */
+
+        .group {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 14px;
+
+            width: 100%;
+
+            padding: 16px;
+
+            background: #FFFFFF;
+
+            border: 1px solid #E7EAEC;
+
+            border-radius: 16px;
+
+            text-decoration: none;
+
+            color: #20252A;
+
+            box-shadow:
+                0 2px 8px
+                rgba(0, 0, 0, 0.035);
+
+            transition:
+                transform 0.15s ease,
+                box-shadow 0.15s ease,
+                border-color 0.15s ease;
+        }
+
+
+        .group:hover {
+
+            transform: translateY(-1px);
+
+            border-color: #D5DDDE;
+
+            box-shadow:
+                0 6px 16px
+                rgba(0, 0, 0, 0.07);
+        }
+
+
+        /* =========================
+           GROUP ICON
+        ========================= */
+
+        .group-icon {
+
+            width: 46px;
+
+            height: 46px;
+
+            min-width: 46px;
+
+            border-radius: 13px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            background: #E8F4F3;
+
+            font-size: 21px;
+        }
+
+
+        /* =========================
+           GROUP TEXT
+        ========================= */
+
+        .group-info {
+
+            flex: 1;
+
+            min-width: 0;
+        }
+
+
+        .name {
+
+            font-size: 16px;
+
+            font-weight: 750;
+
+            margin-bottom: 4px;
+        }
+
+
+        .description {
+
+            font-size: 13px;
+
+            color: #7A838B;
+
+            line-height: 1.35;
+        }
+
+
+        /* =========================
+           ARROW
+        ========================= */
+
+        .arrow {
+
+            font-size: 24px;
+
+            color: #A1A8AD;
+
+            line-height: 1;
+        }
+
+
+        /* =========================
+           ADD BUTTON
+        ========================= */
+
+        .add-button-wrapper {
+
+            display: flex;
+
+            justify-content: center;
+
+            margin-top: 20px;
+        }
+
+
+        .add {
+
+            height: 50px;
+
+            padding:
+                0 26px;
+
+            border: none;
+
+            border-radius: 13px;
+
+            background: #167C78;
+
+            color: #FFFFFF;
+
+            font-size: 15px;
+
+            font-weight: 700;
+
+            font-family: inherit;
+
+            cursor: pointer;
+
+            box-shadow:
+                0 4px 12px
+                rgba(22, 124, 120, 0.20);
+
+            transition:
+                background 0.15s ease,
+                transform 0.15s ease,
+                box-shadow 0.15s ease;
+        }
+
+
+        .add:hover {
+
+            background: #126A67;
+
+            transform: translateY(-1px);
+
+            box-shadow:
+                0 6px 16px
+                rgba(22, 124, 120, 0.24);
+        }
+
+
+        .add:active {
+
+            transform: translateY(0);
+        }
+
+
+        /* =========================
+           MODAL BACKGROUND
+        ========================= */
+
+        .overlay {
+
+            display: none;
+
+            position: fixed;
+
+            inset: 0;
+
+            z-index: 100;
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding: 20px;
+
+            background:
+                rgba(20, 25, 28, 0.48);
+        }
+
+
+        /* =========================
+           MODAL
+        ========================= */
+
+        .modal {
+
+            width: 100%;
+
+            max-width: 470px;
+
+            padding: 24px;
+
+            background: #FFFFFF;
+
+            border-radius: 20px;
+
+            box-shadow:
+                0 20px 60px
+                rgba(0, 0, 0, 0.18);
+        }
+
+
+        .modal h2 {
+
+            margin: 0 0 7px;
+
+            font-size: 22px;
+
+            line-height: 1.2;
+        }
+
+
+        .modal-description {
+
+            margin:
+                0
+                0
+                20px;
+
+            font-size: 13px;
+
+            line-height: 1.45;
+
+            color: #7A838B;
+        }
+
+
+        /* =========================
+           FORM
+        ========================= */
+
+        label {
+
+            display: block;
+
+            margin-bottom: 6px;
+
+            font-size: 13px;
+
+            font-weight: 700;
+
+            color: #4F585E;
+        }
+
+
+        input {
+
+            width: 100%;
+
+            height: 46px;
+
+            margin-bottom: 15px;
+
+            padding:
+                0
+                13px;
+
+            border:
+                1px solid
+                #D9DEE0;
+
+            border-radius: 11px;
+
+            background: #FFFFFF;
+
+            color: #20252A;
+
+            font-family: inherit;
+
+            font-size: 14px;
+
+            outline: none;
+        }
+
+
+        input:focus {
+
+            border-color: #167C78;
+
+            box-shadow:
+                0 0 0 3px
+                rgba(22, 124, 120, 0.08);
+        }
+
+
+        /* =========================
+           MODAL BUTTONS
+        ========================= */
+
+        .modal-buttons {
+
+            display: flex;
+
+            gap: 10px;
+
+            margin-top: 5px;
+        }
+
+
+        .cancel,
+        .save {
+
+            flex: 1;
+
+            height: 46px;
+
+            border: none;
+
+            border-radius: 11px;
+
+            font-family: inherit;
+
+            font-size: 14px;
+
+            font-weight: 700;
+
+            cursor: pointer;
+        }
+
+
+        .cancel {
+
+            background: #EEF0F1;
+
+            color: #596168;
+        }
+
+
+        .save {
+
+            background: #167C78;
+
+            color: #FFFFFF;
+        }
+
+
+        .save:hover {
+
+            background: #126A67;
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 500px) {
+
+            .container {
+
+                padding:
+                    26px
+                    14px
+                    40px;
+            }
+
+
+            h1 {
+
+                font-size: 34px;
+            }
+
+
+            .group {
+
+                padding: 15px;
+            }
+
+
+            .group-icon {
+
+                width: 44px;
+
+                height: 44px;
+
+                min-width: 44px;
+            }
+
+
+            .modal {
+
+                padding: 20px;
+            }
+
+
+            .add {
+
+                width: auto;
+
+                min-width: 190px;
+            }
+
+        }
+
+    </style>
+
 </head>
+
 
 <body>
 
-  <div class="container">
 
-    <h1>Мої групи</h1>
+    <main class="container">
 
-    <div class="groups" id="groups">
 
-      <div class="group-card" onclick="openGroup(11)">
-        <div class="group-title">Група 11</div>
-        <div class="group-info">Натисніть, щоб відкрити групу</div>
-      </div>
+        <!-- HEADER -->
+
+        <header class="header">
+
+            <div class="logo">
+                PARAMEDIC
+            </div>
+
+            <h1>
+                HUB
+            </h1>
+
+            <div class="subtitle">
+                Навчання · комунікація · команди
+            </div>
+
+        </header>
+
+
+
+        <!-- GROUPS -->
+
+        <div class="section-title">
+            Навчальні групи
+        </div>
+
+
+        <div
+            class="groups"
+            id="groups"
+        >
+
+
+            <!-- GROUP 11 -->
+
+            <a
+                class="group"
+                href="https://t.me/"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+
+                <div class="group-icon">
+                    👥
+                </div>
+
+
+                <div class="group-info">
+
+                    <div class="name">
+                        Група 11
+                    </div>
+
+                    <div class="description">
+                        Перепідготовка парамедиків
+                    </div>
+
+                </div>
+
+
+                <div class="arrow">
+                    ›
+                </div>
+
+            </a>
+
+
+        </div>
+
+
+
+        <!-- ADD GROUP BUTTON -->
+
+        <div class="add-button-wrapper">
+
+            <button
+                class="add"
+                onclick="showAddForm()"
+            >
+
+                ＋&nbsp; Додати групу
+
+            </button>
+
+        </div>
+
+
+    </main>
+
+
+
+    <!-- =========================
+         ADD GROUP MODAL
+    ========================= -->
+
+    <div
+        class="overlay"
+        id="overlay"
+        onclick="closeOutside(event)"
+    >
+
+
+        <div
+            class="modal"
+            onclick="event.stopPropagation()"
+        >
+
+
+            <h2>
+                Додати групу
+            </h2>
+
+
+            <p class="modal-description">
+                Додайте навчальну групу до PARAMEDIC HUB.
+            </p>
+
+
+
+            <!-- NAME -->
+
+            <label for="groupName">
+                Назва групи
+            </label>
+
+            <input
+                id="groupName"
+                type="text"
+                placeholder="Наприклад: Група 12"
+            >
+
+
+
+            <!-- DESCRIPTION -->
+
+            <label for="groupDescription">
+                Опис
+            </label>
+
+            <input
+                id="groupDescription"
+                type="text"
+                placeholder="Перепідготовка парамедиків"
+            >
+
+
+
+            <!-- TELEGRAM LINK -->
+
+            <label for="groupLink">
+                Посилання на Telegram-групу
+            </label>
+
+            <input
+                id="groupLink"
+                type="url"
+                placeholder="https://t.me/..."
+            >
+
+
+
+            <!-- BUTTONS -->
+
+            <div class="modal-buttons">
+
+
+                <button
+                    class="cancel"
+                    onclick="closeForm()"
+                >
+                    Скасувати
+                </button>
+
+
+                <button
+                    class="save"
+                    onclick="addGroup()"
+                >
+                    Додати
+                </button>
+
+
+            </div>
+
+
+        </div>
 
     </div>
 
-    <button class="add-button" onclick="showForm()">
-      ＋ Додати групу
-    </button>
 
-    <div class="form-card" id="form">
 
-      <h2>Додати групу</h2>
+    <!-- =========================
+         JAVASCRIPT
+    ========================= -->
 
-      <label for="groupName">Назва групи</label>
-      <input
-        type="text"
-        id="groupName"
-        placeholder="Наприклад: Група 12"
-      >
+    <script>
 
-      <div class="form-buttons">
-        <button class="cancel-button" onclick="hideForm()">
-          Скасувати
-        </button>
 
-        <button class="save-button" onclick="addGroup()">
-          Додати
-        </button>
-      </div>
+        /* OPEN MODAL */
 
-    </div>
+        function showAddForm() {
 
-  </div>
+            document
+                .getElementById("overlay")
+                .style.display = "flex";
 
-  <script>
-    function openGroup(groupNumber) {
-      alert("Ви відкрили групу " + groupNumber);
-    }
 
-    function showForm() {
-      document.getElementById("form").classList.add("active");
+            document
+                .getElementById("groupName")
+                .focus();
 
-      document.getElementById("groupName").focus();
-    }
+        }
 
-    function hideForm() {
-      document.getElementById("form").classList.remove("active");
-      document.getElementById("groupName").value = "";
-    }
 
-    function addGroup() {
-      const input = document.getElementById("groupName");
-      const name = input.value.trim();
 
-      if (!name) {
-        alert("Введіть назву групи");
-        return;
-      }
+        /* CLOSE MODAL */
 
-      const card = document.createElement("div");
+        function closeForm() {
 
-      card.className = "group-card";
+            document
+                .getElementById("overlay")
+                .style.display = "none";
 
-      card.onclick = function () {
-        alert("Ви відкрили " + name);
-      };
 
-      card.innerHTML = `
-        <div class="group-title">${escapeHtml(name)}</div>
-        <div class="group-info">Натисніть, щоб відкрити групу</div>
-      `;
+            document
+                .getElementById("groupName")
+                .value = "";
 
-      document.getElementById("groups").appendChild(card);
 
-      hideForm();
-    }
+            document
+                .getElementById("groupDescription")
+                .value = "";
 
-    function escapeHtml(text) {
-      const div = document.createElement("div");
-      div.textContent = text;
-      return div.innerHTML;
-    }
-  </script>
+
+            document
+                .getElementById("groupLink")
+                .value = "";
+
+        }
+
+
+
+        /* CLOSE BY CLICKING OUTSIDE */
+
+        function closeOutside(event) {
+
+            if (
+                event.target ===
+                document.getElementById("overlay")
+            ) {
+
+                closeForm();
+
+            }
+
+        }
+
+
+
+        /* ADD NEW GROUP */
+
+        function addGroup() {
+
+
+            const name =
+                document
+                .getElementById("groupName")
+                .value
+                .trim();
+
+
+            const description =
+                document
+                .getElementById("groupDescription")
+                .value
+                .trim();
+
+
+            const link =
+                document
+                .getElementById("groupLink")
+                .value
+                .trim();
+
+
+
+            /* CHECK NAME */
+
+            if (!name) {
+
+                alert(
+                    "Вкажіть назву групи."
+                );
+
+                return;
+
+            }
+
+
+
+            /* CHECK LINK */
+
+            if (!link) {
+
+                alert(
+                    "Вкажіть посилання на Telegram-групу."
+                );
+
+                return;
+
+            }
+
+
+
+            /* CHECK TELEGRAM LINK */
+
+            if (
+                !link.startsWith(
+                    "https://t.me/"
+                )
+            ) {
+
+                alert(
+                    "Посилання має починатися з https://t.me/"
+                );
+
+                return;
+
+            }
+
+
+
+            /* CREATE GROUP */
+
+            const group =
+                document.createElement("a");
+
+
+            group.className = "group";
+
+
+            group.href = link;
+
+
+            group.target = "_blank";
+
+
+            group.rel =
+                "noopener noreferrer";
+
+
+
+            group.innerHTML = `
+
+                <div class="group-icon">
+                    👥
+                </div>
+
+
+                <div class="group-info">
+
+                    <div class="name">
+                        ${escapeHTML(name)}
+                    </div>
+
+                    <div class="description">
+                        ${
+                            escapeHTML(
+                                description ||
+                                "Навчальна група"
+                            )
+                        }
+                    </div>
+
+                </div>
+
+
+                <div class="arrow">
+                    ›
+                </div>
+
+            `;
+
+
+
+            /* ADD TO LIST */
+
+            document
+                .getElementById("groups")
+                .appendChild(group);
+
+
+
+            /* CLOSE */
+
+            closeForm();
+
+        }
+
+
+
+        /* PROTECT HTML */
+
+        function escapeHTML(text) {
+
+            const div =
+                document.createElement("div");
+
+
+            div.textContent = text;
+
+
+            return div.innerHTML;
+
+        }
+
+
+    </script>
+
 
 </body>
+
 </html>
