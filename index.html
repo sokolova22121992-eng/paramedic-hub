@@ -1069,7 +1069,9 @@ async function editGroup(id, event) {
     document.getElementById("overlay").style.display = "flex";
 }
         let editingGroupId = null;
-
+const ADMIN_IDS = [
+    // сюди потім вставимо твій Telegram ID
+];
 async function saveGroup() {
 
     const name = document.getElementById("groupName").value.trim();
