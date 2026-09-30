@@ -933,10 +933,10 @@ async function addGroup() {
 
 
     if (error) {
-        console.error(error);
-        alert("Не вдалося додати групу.");
-        return;
-    }
+    console.error(error);
+    alert("Помилка: " + error.message);
+    return;
+}
 
 
     /* RELOAD GROUPS */
