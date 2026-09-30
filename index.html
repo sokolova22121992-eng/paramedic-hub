@@ -783,7 +783,7 @@ const db = window.supabase.createClient(
         /* OPEN MODAL */
 async function loadGroups() {
   const { data, error } = await db
-    .from("groups")
+    .from("group")
     .select("id, name, description, telegram_link")
     .order("created_at", { ascending: true });
 
@@ -924,7 +924,7 @@ async function addGroup() {
     /* SAVE TO SUPABASE */
 
     const { error } = await db
-        .from("groups")
+        .from("group")
         .insert({
             name: name,
             description: description || "Навчальна група",
