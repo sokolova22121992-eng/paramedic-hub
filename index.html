@@ -1,71 +1,257 @@
-group.rel =
-            "noopener noreferrer";
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Мої групи</title>
 
-
-
-        group.innerHTML = `
-
-            <div class="group-icon">
-                👥
-            </div>
-
-
-            <div class="group-info">
-
-                <div class="name">
-                    ${escapeHTML(name)}
-                </div>
-
-                <div class="description">
-                    ${
-                        escapeHTML(
-                            description ||
-                            "Навчальна група"
-                        )
-                    }
-                </div>
-
-            </div>
-
-
-            <div class="arrow">
-                ›
-            </div>
-
-        `;
-
-
-
-        /* ADD TO LIST */
-
-        document
-            .getElementById("groups")
-            .appendChild(group);
-
-
-
-        /* CLOSE */
-
-        closeForm();
-
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
-
-
-    /* PROTECT HTML */
-
-    function escapeHTML(text) {
-
-        const div =
-            document.createElement("div");
-
-
-        div.textContent = text;
-
-
-        return div.innerHTML;
-
+    body {
+      font-family: Arial, sans-serif;
+      background: #f2f4f5;
+      color: #222;
+      min-height: 100vh;
+      padding: 20px;
     }
 
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+    }
 
-</script>
+    h1 {
+      text-align: center;
+      margin-bottom: 24px;
+      font-size: 28px;
+    }
+
+    .groups {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .group-card {
+      background: white;
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.06);
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .group-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+    }
+
+    .group-title {
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 6px;
+    }
+
+    .group-info {
+      color: #777;
+      font-size: 14px;
+    }
+
+    .add-button {
+      display: block;
+      margin: 24px auto 0;
+      border: none;
+      background: #16b8b0;
+      color: white;
+      font-size: 17px;
+      font-weight: bold;
+      padding: 14px 24px;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .add-button:hover {
+      background: #119e98;
+    }
+
+    .form-card {
+      display: none;
+      background: white;
+      border-radius: 16px;
+      padding: 20px;
+      margin-top: 20px;
+      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.06);
+    }
+
+    .form-card.active {
+      display: block;
+    }
+
+    .form-card h2 {
+      margin-bottom: 18px;
+      font-size: 22px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 7px;
+      font-weight: bold;
+    }
+
+    input {
+      width: 100%;
+      padding: 13px;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      font-size: 16px;
+      margin-bottom: 14px;
+      outline: none;
+    }
+
+    input:focus {
+      border-color: #16b8b0;
+    }
+
+    .form-buttons {
+      display: flex;
+      gap: 10px;
+    }
+
+    .save-button,
+    .cancel-button {
+      flex: 1;
+      border: none;
+      padding: 13px;
+      border-radius: 10px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .save-button {
+      background: #16b8b0;
+      color: white;
+    }
+
+    .cancel-button {
+      background: #e9ecef;
+      color: #333;
+    }
+
+    @media (max-width: 480px) {
+      body {
+        padding: 14px;
+      }
+
+      h1 {
+        font-size: 24px;
+      }
+
+      .group-card {
+        padding: 17px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <h1>Мої групи</h1>
+
+    <div class="groups" id="groups">
+
+      <div class="group-card" onclick="openGroup(11)">
+        <div class="group-title">Група 11</div>
+        <div class="group-info">Натисніть, щоб відкрити групу</div>
+      </div>
+
+    </div>
+
+    <button class="add-button" onclick="showForm()">
+      ＋ Додати групу
+    </button>
+
+    <div class="form-card" id="form">
+
+      <h2>Додати групу</h2>
+
+      <label for="groupName">Назва групи</label>
+      <input
+        type="text"
+        id="groupName"
+        placeholder="Наприклад: Група 12"
+      >
+
+      <div class="form-buttons">
+        <button class="cancel-button" onclick="hideForm()">
+          Скасувати
+        </button>
+
+        <button class="save-button" onclick="addGroup()">
+          Додати
+        </button>
+      </div>
+
+    </div>
+
+  </div>
+
+  <script>
+    function openGroup(groupNumber) {
+      alert("Ви відкрили групу " + groupNumber);
+    }
+
+    function showForm() {
+      document.getElementById("form").classList.add("active");
+
+      document.getElementById("groupName").focus();
+    }
+
+    function hideForm() {
+      document.getElementById("form").classList.remove("active");
+      document.getElementById("groupName").value = "";
+    }
+
+    function addGroup() {
+      const input = document.getElementById("groupName");
+      const name = input.value.trim();
+
+      if (!name) {
+        alert("Введіть назву групи");
+        return;
+      }
+
+      const card = document.createElement("div");
+
+      card.className = "group-card";
+
+      card.onclick = function () {
+        alert("Ви відкрили " + name);
+      };
+
+      card.innerHTML = `
+        <div class="group-title">${escapeHtml(name)}</div>
+        <div class="group-info">Натисніть, щоб відкрити групу</div>
+      `;
+
+      document.getElementById("groups").appendChild(card);
+
+      hideForm();
+    }
+
+    function escapeHtml(text) {
+      const div = document.createElement("div");
+      div.textContent = text;
+      return div.innerHTML;
+    }
+  </script>
+
+</body>
+</html>
