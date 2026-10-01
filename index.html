@@ -690,7 +690,27 @@
             </button>
 
         </div>
-
+<div
+    id="adminLogout"
+    style="
+        text-align: center;
+        margin-top: 8px;
+        display: none;
+    "
+>
+    <button
+        onclick="adminLogout()"
+        style="
+            background: none;
+            border: none;
+            color: #7A838B;
+            font-size: 13px;
+            cursor: pointer;
+        "
+    >
+        Вийти з облікового запису
+    </button>
+</div>
     </main>
 
 
@@ -1284,7 +1304,14 @@ db.auth.onAuthStateChange(function () {
 });
 
 updateAdminUI();
+async function adminLogout() {
 
+    await db.auth.signOut();
+
+    updateAdminUI();
+
+    await loadGroups();
+}
     </script>
 
 
