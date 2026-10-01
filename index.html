@@ -1284,7 +1284,7 @@ async function updateAdminUI() {
     const loginButton = document.querySelector(
         'button[onclick="showAdminLogin()"]'
     );
-
+const logoutButton = document.getElementById("adminLogout");
     if (addButton) {
         addButton.style.display = isAdmin ? "block" : "none";
     }
