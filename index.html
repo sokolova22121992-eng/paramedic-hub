@@ -1216,7 +1216,101 @@ async function saveGroup() {
             return div.innerHTML;
 
         }
+function escapeHTML(text) {
 
+    const div =
+        document.createElement("div");
+
+    div.textContent = text;
+
+    return div.innerHTML;
+
+}
+
+
+// ===== ADMIN LOGIN =====
+
+async function adminLogin() {
+
+    const email = document.getElementById("adminEmail").value.trim();
+    const password = document.getElementById("adminPassword").value;
+
+    if (!email || !password) {
+        alert("Введіть email і пароль.");
+        return;
+    }
+
+    const { error } = await db.auth.signInWithPassword({
+        email: email,
+        password: password
+    });
+
+    if (error) {
+        alert("Неправильний email або пароль.");
+        return;
+    }
+
+    closeAdminLogin();
+    updateAdminUI();
+    await loadGroups();
+}
+
+
+function showAdminLogin() {
+
+    document.getElementById("adminOverlay").style.display = "flex";
+
+    document.getElementById("adminEmail").focus();
+}
+
+
+function closeAdminLogin(event) {
+
+    if (
+        event &&
+        event.target !== document.getElementById("adminOverlay")
+    ) {
+        return;
+    }
+
+    document.getElementById("adminOverlay").style.display = "none";
+
+    document.getElementById("adminEmail").value = "";
+    document.getElementById("adminPassword").value = "";
+}
+
+
+async function updateAdminUI() {
+
+    const { data } = await db.auth.getSession();
+
+    const isAdmin = !!data.session;
+
+    const addButton = document.querySelector(".add-button-wrapper");
+    const groupActions = document.querySelectorAll(".group-actions");
+    const loginButton = document.querySelector(
+        'button[onclick="showAdminLogin()"]'
+    );
+
+    if (addButton) {
+        addButton.style.display = isAdmin ? "block" : "none";
+    }
+
+    groupActions.forEach(function (element) {
+        element.style.display = isAdmin ? "flex" : "none";
+    });
+
+    if (loginButton) {
+        loginButton.style.display = isAdmin ? "none" : "inline-block";
+    }
+}
+
+
+db.auth.onAuthStateChange(function () {
+    updateAdminUI();
+});
+
+updateAdminUI();
 
     </script>
 
