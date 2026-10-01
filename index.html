@@ -701,7 +701,22 @@
             </button>
 
         </div>
+        <div style="text-align: center; margin-top: 12px;">
 
+            <button
+                onclick="showAdminLogin()"
+                style="
+                    background: none;
+                    border: none;
+                    color: #7A838B;
+                    font-size: 13px;
+                    cursor: pointer;
+                "
+            >
+                🔐 Увійти як адміністратор
+            </button>
+
+        </div>
 
     </main>
 
@@ -808,10 +823,7 @@
 
     <script> const SUPABASE_URL = "https://ccgsbwzdnagrjttuwdwo.supabase.co";
 const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_x0hztESOV7ohYyqaFzks2g_7ee-N8xE";
-console.log(
-    "Мій Telegram ID:",
-    window.Telegram?.WebApp?.initDataUnsafe?.user?.id
-);
+
 const db = window.supabase.createClient(
   SUPABASE_URL,
   SUPABASE_PUBLISHABLE_KEY
