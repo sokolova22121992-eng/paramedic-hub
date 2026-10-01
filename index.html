@@ -1294,10 +1294,12 @@ const logoutButton = document.getElementById("adminLogout");
     });
 
     if (loginButton) {
-        loginButton.style.display = isAdmin ? "none" : "inline-block";
-    }
+    loginButton.style.display = isAdmin ? "none" : "inline-block";
 }
 
+if (logoutButton) {
+    logoutButton.style.display = isAdmin ? "block" : "none";
+}
 
 db.auth.onAuthStateChange(function () {
     updateAdminUI();
