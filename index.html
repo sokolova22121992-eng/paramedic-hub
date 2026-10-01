@@ -814,7 +814,67 @@
         </div>
 
     </div>
+<!-- ADMIN LOGIN MODAL -->
 
+<div
+    class="overlay"
+    id="adminOverlay"
+    onclick="closeAdminLogin(event)"
+    style="display: none;"
+>
+
+    <div
+        class="modal"
+        onclick="event.stopPropagation()"
+    >
+
+        <h2>Вхід адміністратора</h2>
+
+        <p class="modal-description">
+            Увійдіть, щоб керувати навчальними групами.
+        </p>
+
+        <label for="adminEmail">
+            Email
+        </label>
+
+        <input
+            id="adminEmail"
+            type="email"
+            placeholder="Ваш email"
+        >
+
+        <label for="adminPassword">
+            Пароль
+        </label>
+
+        <input
+            id="adminPassword"
+            type="password"
+            placeholder="Ваш пароль"
+        >
+
+        <div class="modal-buttons">
+
+            <button
+                class="cancel"
+                onclick="closeAdminLogin()"
+            >
+                Скасувати
+            </button>
+
+            <button
+                class="save"
+                onclick="adminLogin()"
+            >
+                Увійти
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
     <!-- =========================
