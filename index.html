@@ -92,6 +92,7 @@
         }
 
         .group {
+            position: relative;
             display: flex;
             align-items: center;
             width: 100%;
@@ -103,20 +104,7 @@
             box-shadow:
                 0 2px 6px rgba(0, 0, 0, 0.035);
             user-select: none;
-           touch-action: pan-y;
-            transition:
-                transform 0.15s ease,
-                opacity 0.15s ease,
-                border-color 0.15s ease;
-        }
-
-        .group.dragging {
-            opacity: 0.45;
-            transform: scale(1.02);
-        }
-
-        .group.drag-over {
-            border-top: 3px solid #167C78;
+            touch-action: pan-y;
         }
 
         .group-main {
@@ -127,6 +115,7 @@
             min-width: 0;
             text-decoration: none;
             color: inherit;
+            cursor: pointer;
         }
 
         .group-icon {
@@ -331,6 +320,32 @@
             background: #126A67;
         }
 
+        .sort-controls {
+            display: none;
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            gap: 5px;
+            z-index: 20;
+        }
+
+        .sort-controls button {
+            width: 32px;
+            height: 32px;
+            border: 1px solid #2f80ed;
+            border-radius: 8px;
+            background: white;
+            color: #2f80ed;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        .sort-controls button:disabled {
+            opacity: 0.3;
+            cursor: default;
+        }
+
         @media (max-width: 500px) {
 
             .container {
@@ -356,36 +371,7 @@
             }
 
         }
-.drag-handle {
-    position: absolute;
-    left: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 24px;
-    line-height: 1;
-    cursor: grab;
-    opacity: 0.45;
-    user-select: none;
-    touch-action: none;
-    z-index: 10;
-}
 
-.drag-handle:active {
-    cursor: grabbing;
-    opacity: 1;
-}
-
-.group {
-    position: relative;
-}
-
-.group.dragging {
-    opacity: 0.5;
-}
-
-.group.drag-over {
-    border-top: 3px solid #2f80ed;
-}
     </style>
 
 </head>
@@ -480,10 +466,6 @@
 
 
 
-<!-- =========================
-     ADD / EDIT
-========================= -->
-
 <div
     id="overlay"
     class="overlay"
@@ -562,10 +544,6 @@
 
 
 
-<!-- =========================
-     ADMIN LOGIN
-========================= -->
-
 <div
     id="adminOverlay"
     class="overlay"
@@ -631,11 +609,24 @@
 </div>
 
 
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 
 <script>
+
+
+/* =========================
+   TELEGRAM
+========================= */
+
+if (
+    window.Telegram &&
+    window.Telegram.WebApp
+) {
+    window.Telegram.WebApp.ready();
+}
 
 
 /* =========================
@@ -655,6 +646,15 @@ const db =
         SUPABASE_URL,
         SUPABASE_PUBLISHABLE_KEY
     );
+
+
+const BRIGHT_PROCESSOR_URL =
+    SUPABASE_URL +
+    "/functions/v1/bright-processor";
+
+
+const RESTRICTED_GROUP_NAME =
+    "ДГД baby";
 
 
 let editingGroupId = null;
@@ -686,6 +686,107 @@ function hideError() {
 
     error.style.display =
         "none";
+}
+
+
+/* =========================
+   CHECK TELEGRAM MEMBERSHIP
+========================= */
+
+async function checkDgdBabyAccess() {
+
+    if (
+        !window.Telegram ||
+        !window.Telegram.WebApp
+    ) {
+        alert(
+            "Цю групу можна відкрити лише через Telegram."
+        );
+
+        return false;
+    }
+
+
+    const initData =
+        window.Telegram.WebApp.initData;
+
+
+    if (!initData) {
+
+        alert(
+            "Не вдалося отримати дані Telegram. Відкрийте PARAMEDIC HUB через Telegram."
+        );
+
+        return false;
+    }
+
+
+    try {
+
+        const response =
+            await fetch(
+                BRIGHT_PROCESSOR_URL,
+                {
+                    method: "POST",
+
+                    headers: {
+                        "Content-Type":
+                            "application/json"
+                    },
+
+                    body:
+                        JSON.stringify({
+                            action:
+                                "check_dgd_baby",
+
+                            initData:
+                                initData
+                        })
+                }
+            );
+
+
+        const result =
+            await response.json();
+
+
+        console.log(
+            "DGD BABY ACCESS:",
+            result
+        );
+
+
+        if (
+            result.ok &&
+            result.member
+        ) {
+            return true;
+        }
+
+
+        alert(
+            "Доступ до цієї групи мають лише учасники Telegram-групи «ДГД baby»."
+        );
+
+
+        return false;
+
+    } catch (error) {
+
+        console.error(
+            "MEMBERSHIP CHECK ERROR:",
+            error
+        );
+
+
+        alert(
+            "Не вдалося перевірити доступ. Спробуйте ще раз."
+        );
+
+
+        return false;
+    }
+
 }
 
 
@@ -823,6 +924,42 @@ async function loadGroups() {
             `;
 
 
+            /*
+             * ДГД baby — перевіряємо членство
+             */
+            if (
+                group.name.trim() ===
+                RESTRICTED_GROUP_NAME
+            ) {
+
+                main.addEventListener(
+                    "click",
+                    async function(event) {
+
+                        event.preventDefault();
+
+                        event.stopPropagation();
+
+
+                        const hasAccess =
+                            await checkDgdBabyAccess();
+
+
+                        if (hasAccess) {
+
+                            window.open(
+                                group.telegram_link,
+                                "_blank"
+                            );
+
+                        }
+
+                    }
+                );
+
+            }
+
+
             const actions =
                 document.createElement("div");
 
@@ -898,61 +1035,146 @@ async function loadGroups() {
 
 
 /* =========================
-   DRAG & DROP
+   SORT GROUPS
 ========================= */
 
 function enableDragAndDrop() {
-    const container = document.getElementById("groups");
-const cards = [...container.querySelectorAll(".group")];
 
-if (document.body.dataset.admin !== "true") return;
+    const container =
+        document.getElementById("groups");
 
-cards.forEach(function(card, index) {
 
-    if (card.querySelector(".sort-controls")) return;
+    const cards =
+        [
+            ...container.querySelectorAll(".group")
+        ];
 
-    const controls = document.createElement("div");
 
-    controls.className = "sort-controls";
+    if (
+        document.body.dataset.admin !== "true"
+    ) {
+        return;
+    }
 
-    controls.innerHTML = `
-        <button type="button" class="sort-up" ${index === 0 ? "disabled" : ""}>↑</button>
-        <button type="button" class="sort-down" ${index === cards.length - 1 ? "disabled" : ""}>↓</button>
-    `;
 
-    card.appendChild(controls);
+    cards.forEach(
+        function(card, index) {
 
-    controls.querySelector(".sort-up").addEventListener("click", async function(event) {
-        event.preventDefault();
-        event.stopPropagation();
+            if (
+                card.querySelector(
+                    ".sort-controls"
+                )
+            ) {
+                return;
+            }
 
-        const previous = card.previousElementSibling;
 
-        if (!previous) return;
+            const controls =
+                document.createElement("div");
 
-        container.insertBefore(card, previous);
 
-        await saveGroupOrder();
+            controls.className =
+                "sort-controls";
 
-        location.reload();
-    });
 
-    controls.querySelector(".sort-down").addEventListener("click", async function(event) {
-        event.preventDefault();
-        event.stopPropagation();
+            controls.innerHTML = `
 
-        const next = card.nextElementSibling;
+                <button
+                    type="button"
+                    class="sort-up"
+                    ${index === 0 ? "disabled" : ""}
+                >
+                    ↑
+                </button>
 
-        if (!next) return;
+                <button
+                    type="button"
+                    class="sort-down"
+                    ${index === cards.length - 1 ? "disabled" : ""}
+                >
+                    ↓
+                </button>
 
-        container.insertBefore(next, card);
+            `;
 
-        await saveGroupOrder();
 
-        location.reload();
-    });
-});
+            card.appendChild(controls);
+
+
+            controls
+                .querySelector(".sort-up")
+                .addEventListener(
+                    "click",
+                    async function(event) {
+
+                        event.preventDefault();
+
+                        event.stopPropagation();
+
+
+                        const previous =
+                            card.previousElementSibling;
+
+
+                        if (!previous) {
+                            return;
+                        }
+
+
+                        container.insertBefore(
+                            card,
+                            previous
+                        );
+
+
+                        await saveGroupOrder();
+
+
+                        location.reload();
+
+                    }
+                );
+
+
+            controls
+                .querySelector(".sort-down")
+                .addEventListener(
+                    "click",
+                    async function(event) {
+
+                        event.preventDefault();
+
+                        event.stopPropagation();
+
+
+                        const next =
+                            card.nextElementSibling;
+
+
+                        if (!next) {
+                            return;
+                        }
+
+
+                        container.insertBefore(
+                            next,
+                            card
+                        );
+
+
+                        await saveGroupOrder();
+
+
+                        location.reload();
+
+                    }
+                );
+
+        }
+    );
+
 }
+
 
 /* =========================
    SAVE ORDER
@@ -1187,7 +1409,6 @@ async function saveGroup() {
             result.error;
 
     } else {
-
 
         const {
             data: lastGroup,
@@ -1610,6 +1831,22 @@ async function updateAdminUI() {
     document
         .querySelectorAll(
             ".group-actions"
+        )
+        .forEach(
+            function(element) {
+
+                element.style.display =
+                    isAdmin
+                        ? "flex"
+                        : "none";
+
+            }
+        );
+
+
+    document
+        .querySelectorAll(
+            ".sort-controls"
         )
         .forEach(
             function(element) {
