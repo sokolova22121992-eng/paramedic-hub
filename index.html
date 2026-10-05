@@ -103,7 +103,7 @@
             box-shadow:
                 0 2px 6px rgba(0, 0, 0, 0.035);
             user-select: none;
-           touch-action: none;
+           touch-action: pan-y;
             transition:
                 transform 0.15s ease,
                 opacity 0.15s ease,
@@ -356,7 +356,36 @@
             }
 
         }
+.drag-handle {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 24px;
+    line-height: 1;
+    cursor: grab;
+    opacity: 0.45;
+    user-select: none;
+    touch-action: none;
+    z-index: 10;
+}
 
+.drag-handle:active {
+    cursor: grabbing;
+    opacity: 1;
+}
+
+.group {
+    position: relative;
+}
+
+.group.dragging {
+    opacity: 0.5;
+}
+
+.group.drag-over {
+    border-top: 3px solid #2f80ed;
+}
     </style>
 
 </head>
@@ -873,187 +902,82 @@ async function loadGroups() {
 ========================= */
 
 function enableDragAndDrop() {
-
-    const container =
-        document.getElementById("groups");
-
-
-    const cards =
-        container.querySelectorAll(".group");
-
+    const container = document.getElementById("groups");
+    const cards = container.querySelectorAll(".group");
 
     let dragged = null;
 
+    cards.forEach(function(card) {
 
-    cards.forEach(
-        function(card) {
+        // Робимо окрему область для перетягування
+        const handle = document.createElement("div");
 
+        handle.innerHTML = "⠿";
+        handle.className = "drag-handle";
+        handle.title = "Перемістити групу";
 
-            card.addEventListener(
-                "pointerdown",
-                function(event) {
+        card.prepend(handle);
 
-                    if (
-                        document.body.dataset.admin !==
-                        "true"
-                    ) {
-                        return;
-                    }
+        handle.addEventListener("pointerdown", function(event) {
+            if (document.body.dataset.admin !== "true") return;
 
+            event.preventDefault();
+            event.stopPropagation();
 
-                    if (
-                        event.target.closest(
-                            ".group-actions"
-                        )
-                    ) {
-                        return;
-                    }
+            dragged = card;
 
+            card.classList.add("dragging");
 
-                    dragged =
-                        card;
+            try {
+                handle.setPointerCapture(event.pointerId);
+            } catch (_) {}
+        });
 
+        handle.addEventListener("pointermove", function(event) {
+            if (dragged !== card) return;
 
-                    card.classList.add(
-                        "dragging"
-                    );
+            event.preventDefault();
 
+            const others = [
+                ...container.querySelectorAll(".group:not(.dragging)")
+            ];
 
-                    try {
+            const next = others.find(function(item) {
+                const rect = item.getBoundingClientRect();
 
-                        card.setPointerCapture(
-                            event.pointerId
-                        );
+                return event.clientY < rect.top + rect.height / 2;
+            });
 
-                    } catch (_) {}
+            container.querySelectorAll(".group").forEach(function(item) {
+                item.classList.remove("drag-over");
+            });
 
-                }
-            );
+            if (next) {
+                next.classList.add("drag-over");
+                container.insertBefore(card, next);
+            } else {
+                container.appendChild(card);
+            }
+        });
 
+        handle.addEventListener("pointerup", async function(event) {
+            if (dragged !== card) return;
 
-            card.addEventListener(
-                "pointermove",
-                function(event) {
+            try {
+                handle.releasePointerCapture(event.pointerId);
+            } catch (_) {}
 
-                    if (
-                        dragged !== card
-                    ) {
-                        return;
-                    }
+            card.classList.remove("dragging");
 
+            container.querySelectorAll(".group").forEach(function(item) {
+                item.classList.remove("drag-over");
+            });
 
-                    const others =
-                        [
-                            ...container.querySelectorAll(
-                                ".group:not(.dragging)"
-                            )
-                        ];
+            dragged = null;
 
-
-                    const next =
-                        others.find(
-                            function(item) {
-
-                                const rect =
-                                    item.getBoundingClientRect();
-
-
-                                return (
-                                    event.clientY <
-                                    rect.top +
-                                    rect.height / 2
-                                );
-
-                            }
-                        );
-
-
-                    container
-                        .querySelectorAll(".group")
-                        .forEach(
-                            function(item) {
-
-                                item.classList.remove(
-                                    "drag-over"
-                                );
-
-                            }
-                        );
-
-
-                    if (next) {
-
-                        next.classList.add(
-                            "drag-over"
-                        );
-
-
-                        container.insertBefore(
-                            card,
-                            next
-                        );
-
-                    } else {
-
-                        container.appendChild(
-                            card
-                        );
-
-                    }
-
-                }
-            );
-
-
-            card.addEventListener(
-                "pointerup",
-                async function(event) {
-
-                    if (
-                        dragged !== card
-                    ) {
-                        return;
-                    }
-
-
-                    try {
-
-                        card.releasePointerCapture(
-                            event.pointerId
-                        );
-
-                    } catch (_) {}
-
-
-                    card.classList.remove(
-                        "dragging"
-                    );
-
-
-                    container
-                        .querySelectorAll(".group")
-                        .forEach(
-                            function(item) {
-
-                                item.classList.remove(
-                                    "drag-over"
-                                );
-
-                            }
-                        );
-
-
-                    dragged = null;
-
-
-                    await saveGroupOrder();
-
-                }
-            );
-
-        }
-    );
-
+            await saveGroupOrder();
+        });
+    });
 }
 
 
