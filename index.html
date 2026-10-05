@@ -12,13 +12,11 @@
 
     <title>PARAMEDIC HUB</title>
 
-
     <style>
 
         * {
             box-sizing: border-box;
         }
-
 
         body {
 
@@ -39,7 +37,7 @@
 
 
         /* =========================
-           MAIN CONTAINER
+           CONTAINER
         ========================= */
 
         .container {
@@ -66,7 +64,6 @@
             margin-bottom: 32px;
         }
 
-
         .logo {
 
             font-size: 14px;
@@ -80,7 +77,6 @@
             margin-bottom: 4px;
         }
 
-
         h1 {
 
             margin: 0;
@@ -93,7 +89,6 @@
 
             letter-spacing: -1.5px;
         }
-
 
         .subtitle {
 
@@ -126,7 +121,33 @@
 
 
         /* =========================
-           GROUP LIST
+           ERROR
+        ========================= */
+
+        .error {
+
+            display: none;
+
+            margin-bottom: 15px;
+
+            padding: 14px;
+
+            border-radius: 12px;
+
+            background: #FDECEC;
+
+            border: 1px solid #F2C7C7;
+
+            color: #9B3D3D;
+
+            font-size: 13px;
+
+            line-height: 1.4;
+        }
+
+
+        /* =========================
+           GROUPS
         ========================= */
 
         .groups {
@@ -175,7 +196,6 @@
                 border-color 0.15s ease;
         }
 
-
         .group.dragging {
 
             opacity: 0.45;
@@ -183,12 +203,10 @@
             transform: scale(1.02);
         }
 
-
         .group.drag-over {
 
             border-top:
-                3px solid
-                #167C78;
+                3px solid #167C78;
         }
 
 
@@ -251,7 +269,6 @@
             min-width: 0;
         }
 
-
         .name {
 
             font-size: 15px;
@@ -262,7 +279,6 @@
 
             margin-bottom: 1px;
         }
-
 
         .description {
 
@@ -294,7 +310,7 @@
 
         .group-actions {
 
-            display: flex;
+            display: none;
 
             align-items: center;
 
@@ -302,7 +318,6 @@
 
             margin-left: 5px;
         }
-
 
         .group-actions button {
 
@@ -313,8 +328,7 @@
             padding: 0;
 
             border:
-                1px solid
-                #E1E5E7;
+                1px solid #E1E5E7;
 
             border-radius: 7px;
 
@@ -329,18 +343,15 @@
             cursor: pointer;
         }
 
-
         .group-actions button:hover {
 
             background: #F3F5F6;
         }
 
-
         .edit-btn {
 
             color: #167C78;
         }
-
 
         .delete-btn {
 
@@ -354,20 +365,18 @@
 
         .add-button-wrapper {
 
-            display: flex;
+            display: none;
 
             justify-content: center;
 
             margin-top: 20px;
         }
 
-
         .add {
 
             height: 50px;
 
-            padding:
-                0 26px;
+            padding: 0 26px;
 
             border: none;
 
@@ -384,38 +393,53 @@
             font-family: inherit;
 
             cursor: pointer;
-
-            box-shadow:
-                0 4px 12px
-                rgba(22, 124, 120, 0.20);
-
-            transition:
-                background 0.15s ease,
-                transform 0.15s ease,
-                box-shadow 0.15s ease;
         }
-
 
         .add:hover {
 
             background: #126A67;
-
-            transform: translateY(-1px);
-
-            box-shadow:
-                0 6px 16px
-                rgba(22, 124, 120, 0.24);
-        }
-
-
-        .add:active {
-
-            transform: translateY(0);
         }
 
 
         /* =========================
-           MODAL BACKGROUND
+           LOGIN
+        ========================= */
+
+        .login-wrapper {
+
+            text-align: center;
+
+            margin-top: 18px;
+        }
+
+        .login-button,
+        .logout-button {
+
+            background: none;
+
+            border: none;
+
+            color: #7A838B;
+
+            font-size: 13px;
+
+            cursor: pointer;
+
+            font-family: inherit;
+        }
+
+        .logout-wrapper {
+
+            display: none;
+
+            text-align: center;
+
+            margin-top: 8px;
+        }
+
+
+        /* =========================
+           MODAL
         ========================= */
 
         .overlay {
@@ -438,11 +462,6 @@
                 rgba(20, 25, 28, 0.48);
         }
 
-
-        /* =========================
-           MODAL
-        ========================= */
-
         .modal {
 
             width: 100%;
@@ -460,26 +479,18 @@
                 rgba(0, 0, 0, 0.18);
         }
 
-
         .modal h2 {
 
             margin:
-                0
-                0
-                7px;
+                0 0 7px;
 
             font-size: 22px;
-
-            line-height: 1.2;
         }
-
 
         .modal-description {
 
             margin:
-                0
-                0
-                20px;
+                0 0 20px;
 
             font-size: 13px;
 
@@ -506,7 +517,6 @@
             color: #4F585E;
         }
 
-
         input {
 
             width: 100%;
@@ -516,12 +526,10 @@
             margin-bottom: 15px;
 
             padding:
-                0
-                13px;
+                0 13px;
 
             border:
-                1px solid
-                #D9DEE0;
+                1px solid #D9DEE0;
 
             border-radius: 11px;
 
@@ -535,7 +543,6 @@
 
             outline: none;
         }
-
 
         input:focus {
 
@@ -560,7 +567,6 @@
             margin-top: 5px;
         }
 
-
         .cancel,
         .save {
 
@@ -581,7 +587,6 @@
             cursor: pointer;
         }
 
-
         .cancel {
 
             background: #EEF0F1;
@@ -589,18 +594,11 @@
             color: #596168;
         }
 
-
         .save {
 
             background: #167C78;
 
             color: #FFFFFF;
-        }
-
-
-        .save:hover {
-
-            background: #126A67;
         }
 
 
@@ -618,40 +616,28 @@
                     40px;
             }
 
-
             h1 {
 
                 font-size: 34px;
             }
 
-
             .group {
 
-                padding: 15px;
+                padding: 12px;
             }
-
 
             .group-icon {
 
-                width: 44px;
+                width: 40px;
 
-                height: 44px;
+                height: 40px;
 
-                min-width: 44px;
+                min-width: 40px;
             }
-
 
             .modal {
 
                 padding: 20px;
-            }
-
-
-            .add {
-
-                width: auto;
-
-                min-width: 190px;
             }
 
         }
@@ -664,1428 +650,1358 @@
 <body>
 
 
-    <main class="container">
+<main class="container">
 
 
-        <!-- HEADER -->
+    <!-- HEADER -->
 
-        <header class="header">
+    <header class="header">
 
-            <div class="logo">
-                PARAMEDIC
-            </div>
-
-            <h1>
-                HUB
-            </h1>
-
-            <div class="subtitle">
-                Навчання · комунікація · команди
-            </div>
-
-        </header>
-
-
-        <!-- GROUPS -->
-
-        <div class="section-title">
-            Навчальні групи
+        <div class="logo">
+            PARAMEDIC
         </div>
 
+        <h1>
+            HUB
+        </h1>
 
-        <div
-            class="groups"
-            id="groups"
-        ></div>
-
-
-        <!-- ADD GROUP BUTTON -->
-
-        <div class="add-button-wrapper">
-
-            <button
-                class="add"
-                onclick="showAddForm()"
-            >
-
-                ＋&nbsp; Додати групу
-
-            </button>
-
+        <div class="subtitle">
+            Навчання · комунікація · команди
         </div>
 
-
-        <!-- ADMIN LOGIN -->
-
-        <div
-            style="
-                text-align: center;
-                margin-top: 12px;
-            "
-        >
-
-            <button
-                onclick="showAdminLogin()"
-                style="
-                    background: none;
-                    border: none;
-                    color: #7A838B;
-                    font-size: 13px;
-                    cursor: pointer;
-                "
-            >
-                🔐 Увійти як адміністратор
-            </button>
-
-        </div>
+    </header>
 
 
-        <!-- ADMIN LOGOUT -->
+    <!-- GROUPS -->
 
-        <div
-            id="adminLogout"
-            style="
-                text-align: center;
-                margin-top: 8px;
-                display: none;
-            "
-        >
+    <div class="section-title">
+        Навчальні групи
+    </div>
 
-            <button
-                onclick="adminLogout()"
-                style="
-                    background: none;
-                    border: none;
-                    color: #7A838B;
-                    font-size: 13px;
-                    cursor: pointer;
-                "
-            >
-                Вийти з облікового запису
-            </button>
-
-        </div>
-
-
-    </main>
-
-
-
-    <!-- =========================
-         ADD / EDIT GROUP MODAL
-    ========================= -->
 
     <div
-        class="overlay"
-        id="overlay"
-        onclick="closeOutside(event)"
+        id="error"
+        class="error"
+    ></div>
+
+
+    <div
+        id="groups"
+        class="groups"
+    ></div>
+
+
+    <!-- ADD -->
+
+    <div
+        id="addButtonWrapper"
+        class="add-button-wrapper"
     >
 
-        <div
-            class="modal"
-            onclick="event.stopPropagation()"
+        <button
+            class="add"
+            onclick="showAddForm()"
+        >
+            ＋&nbsp; Додати групу
+        </button>
+
+    </div>
+
+
+    <!-- LOGIN -->
+
+    <div
+        id="loginWrapper"
+        class="login-wrapper"
+    >
+
+        <button
+            class="login-button"
+            onclick="showAdminLogin()"
+        >
+            🔐 Увійти як адміністратор
+        </button>
+
+    </div>
+
+
+    <!-- LOGOUT -->
+
+    <div
+        id="logoutWrapper"
+        class="logout-wrapper"
+    >
+
+        <button
+            class="logout-button"
+            onclick="adminLogout()"
+        >
+            Вийти з облікового запису
+        </button>
+
+    </div>
+
+
+</main>
+
+
+
+<!-- =========================
+     ADD / EDIT MODAL
+========================= -->
+
+<div
+    id="overlay"
+    class="overlay"
+    onclick="closeOutside(event)"
+>
+
+    <div
+        class="modal"
+        onclick="event.stopPropagation()"
+    >
+
+        <h2 id="groupModalTitle">
+            Додати групу
+        </h2>
+
+        <p class="modal-description">
+            Додайте навчальну групу до PARAMEDIC HUB.
+        </p>
+
+
+        <label for="groupName">
+            Назва групи
+        </label>
+
+        <input
+            id="groupName"
+            type="text"
+            placeholder="Наприклад: Група 12"
         >
 
-            <h2 id="groupModalTitle">
-                Додати групу
-            </h2>
+
+        <label for="groupDescription">
+            Опис
+        </label>
+
+        <input
+            id="groupDescription"
+            type="text"
+            placeholder="Перепідготовка парамедиків"
+        >
 
 
-            <p class="modal-description">
-                Додайте навчальну групу до PARAMEDIC HUB.
-            </p>
+        <label for="groupLink">
+            Посилання на Telegram-групу
+        </label>
+
+        <input
+            id="groupLink"
+            type="url"
+            placeholder="https://t.me/..."
+        >
 
 
-            <!-- NAME -->
+        <div class="modal-buttons">
 
-            <label for="groupName">
-                Назва групи
-            </label>
-
-            <input
-                id="groupName"
-                type="text"
-                placeholder="Наприклад: Група 12"
+            <button
+                class="cancel"
+                onclick="closeForm()"
             >
+                Скасувати
+            </button>
 
-
-            <!-- DESCRIPTION -->
-
-            <label for="groupDescription">
-                Опис
-            </label>
-
-            <input
-                id="groupDescription"
-                type="text"
-                placeholder="Перепідготовка парамедиків"
+            <button
+                id="saveGroupButton"
+                class="save"
+                onclick="saveGroup()"
             >
-
-
-            <!-- TELEGRAM LINK -->
-
-            <label for="groupLink">
-                Посилання на Telegram-групу
-            </label>
-
-            <input
-                id="groupLink"
-                type="url"
-                placeholder="https://t.me/..."
-            >
-
-
-            <!-- BUTTONS -->
-
-            <div class="modal-buttons">
-
-                <button
-                    class="cancel"
-                    onclick="closeForm()"
-                >
-                    Скасувати
-                </button>
-
-
-                <button
-                    class="save"
-                    id="saveGroupButton"
-                    onclick="saveGroup()"
-                >
-                    Додати
-                </button>
-
-            </div>
+                Додати
+            </button>
 
         </div>
 
     </div>
 
+</div>
 
 
-    <!-- =========================
-         ADMIN LOGIN MODAL
-    ========================= -->
+
+<!-- =========================
+     ADMIN LOGIN
+========================= -->
+
+<div
+    id="adminOverlay"
+    class="overlay"
+    onclick="closeAdminLogin(event)"
+>
 
     <div
-        class="overlay"
-        id="adminOverlay"
-        onclick="closeAdminLogin(event)"
-        style="display: none;"
+        class="modal"
+        onclick="event.stopPropagation()"
     >
 
-        <div
-            class="modal"
-            onclick="event.stopPropagation()"
+        <h2>
+            Вхід адміністратора
+        </h2>
+
+        <p class="modal-description">
+            Увійдіть, щоб керувати навчальними групами.
+        </p>
+
+
+        <label for="adminEmail">
+            Email
+        </label>
+
+        <input
+            id="adminEmail"
+            type="email"
+            placeholder="Ваш email"
         >
 
-            <h2>
-                Вхід адміністратора
-            </h2>
+
+        <label for="adminPassword">
+            Пароль
+        </label>
+
+        <input
+            id="adminPassword"
+            type="password"
+            placeholder="Ваш пароль"
+        >
 
 
-            <p class="modal-description">
-                Увійдіть, щоб керувати навчальними групами.
-            </p>
+        <div class="modal-buttons">
 
-
-            <label for="adminEmail">
-                Email
-            </label>
-
-            <input
-                id="adminEmail"
-                type="email"
-                placeholder="Ваш email"
+            <button
+                class="cancel"
+                onclick="closeAdminLogin()"
             >
+                Скасувати
+            </button>
 
-
-            <label for="adminPassword">
-                Пароль
-            </label>
-
-            <input
-                id="adminPassword"
-                type="password"
-                placeholder="Ваш пароль"
+            <button
+                class="save"
+                onclick="adminLogin()"
             >
-
-
-            <div class="modal-buttons">
-
-                <button
-                    class="cancel"
-                    onclick="closeAdminLogin()"
-                >
-                    Скасувати
-                </button>
-
-
-                <button
-                    class="save"
-                    onclick="adminLogin()"
-                >
-                    Увійти
-                </button>
-
-            </div>
+                Увійти
+            </button>
 
         </div>
 
     </div>
 
-
-
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
-
-    <script>
-
-
-        /* =========================
-           SUPABASE
-        ========================= */
-
-        const SUPABASE_URL =
-            "https://ccgsbwzdnagrjttuwdwo.supabase.co";
-
-
-        const SUPABASE_PUBLISHABLE_KEY =
-            "sb_publishable_x0hztESOV7ohYyqaFzks2g_7ee-N8xE";
-
-
-        const db =
-            window.supabase.createClient(
-                SUPABASE_URL,
-                SUPABASE_PUBLISHABLE_KEY
-            );
-
-
-        let editingGroupId = null;
+</div>
 
 
 
-        /* =========================
-           LOAD GROUPS
-        ========================= */
-
-        async function loadGroups() {
-
-            const { data, error } = await db
-                .from("groups")
-                .select(
-                    "id, name, description, telegram_link, sort_order"
-                )
-                .order(
-                    "sort_order",
-                    {
-                        ascending: true
-                    }
-                );
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 
-            if (error) {
+<script>
 
-                console.error(error);
 
-                return;
+/* =========================
+   SUPABASE
+========================= */
+
+const SUPABASE_URL =
+    "https://ccgsbwzdnagrjttuwdwo.supabase.co";
+
+
+const SUPABASE_PUBLISHABLE_KEY =
+    "sb_publishable_x0hztESOV7ohYyqaFzks2g_7ee-N8xE";
+
+
+const db =
+    window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_PUBLISHABLE_KEY
+    );
+
+
+let editingGroupId = null;
+
+
+/* =========================
+   ERROR MESSAGE
+========================= */
+
+function showError(message) {
+
+    const error =
+        document.getElementById("error");
+
+    error.textContent =
+        message;
+
+    error.style.display =
+        "block";
+}
+
+
+function hideError() {
+
+    const error =
+        document.getElementById("error");
+
+    error.textContent = "";
+
+    error.style.display =
+        "none";
+}
+
+
+/* =========================
+   LOAD GROUPS
+========================= */
+
+async function loadGroups() {
+
+    hideError();
+
+
+    const container =
+        document.getElementById("groups");
+
+
+    container.innerHTML = "";
+
+
+    const {
+        data,
+        error
+    } = await db
+        .from("groups")
+        .select(
+            "id, name, description, telegram_link, sort_order"
+        )
+        .order(
+            "sort_order",
+            {
+                ascending: true
             }
+        );
 
 
-            const groups =
-                document.getElementById("groups");
+    if (error) {
+
+        console.error(
+            "LOAD GROUPS ERROR:",
+            error
+        );
+
+        showError(
+            "Не вдалося завантажити групи: " +
+            error.message
+        );
+
+        return;
+    }
 
 
-            if (!groups) return;
+    if (!data) {
+
+        showError(
+            "Supabase не повернув список груп."
+        );
+
+        return;
+    }
 
 
-            groups.innerHTML = "";
+    data.forEach(
+        function(group) {
+
+            const card =
+                document.createElement("div");
 
 
-            data.forEach(group => {
-
-                groups.innerHTML += `
-
-                    <div
-                        class="group"
-                        data-id="${group.id}"
-                    >
-
-                        <a
-                            href="${group.telegram_link}"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            class="group-main"
-                        >
-
-                            <div class="group-icon">
-                                👥
-                            </div>
+            card.className =
+                "group";
 
 
-                            <div class="group-info">
-
-                                <div class="name">
-
-                                    ${escapeHTML(
-                                        group.name
-                                    )}
-
-                                </div>
+            card.dataset.id =
+                group.id;
 
 
-                                <div class="description">
+            card.innerHTML = `
 
-                                    ${escapeHTML(
-                                        group.description || ""
-                                    )}
+                <a
+                    class="group-main"
+                    href="${escapeAttribute(
+                        group.telegram_link
+                    )}"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
 
-                                </div>
+                    <div class="group-icon">
+                        👥
+                    </div>
 
-                            </div>
+                    <div class="group-info">
 
+                        <div class="name">
+                            ${escapeHTML(
+                                group.name
+                            )}
+                        </div>
 
-                            <div class="arrow">
-                                ›
-                            </div>
-
-                        </a>
-
-
-                        <div class="group-actions">
-
-                            <!-- EDIT -->
-
-                            <button
-                                class="edit-btn"
-                                onclick="
-                                    editGroup(
-                                        '${group.id}',
-                                        event
-                                    )
-                                "
-                            >
-
-                                <svg
-                                    width="17"
-                                    height="17"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    stroke-width="2"
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                >
-
-                                    <path d="M12 20h9"/>
-
-                                    <path
-                                        d="
-                                            M16.5 3.5
-                                            a2.1 2.1 0 0 1 3 3
-                                            L7 19
-                                            l-4 1
-                                            1-4
-                                            Z
-                                        "
-                                    />
-
-                                </svg>
-
-                            </button>
-
-
-                            <!-- DELETE -->
-
-                            <button
-                                class="delete-btn"
-                                onclick="
-                                    deleteGroup(
-                                        '${group.id}',
-                                        event
-                                    )
-                                "
-                            >
-
-                                <svg
-                                    width="17"
-                                    height="17"
-                                    viewBox="0 0 24 24"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    stroke-width="2"
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                >
-
-                                    <path d="M3 6h18"/>
-
-                                    <path
-                                        d="
-                                            M8 6V4h8v2
-                                        "
-                                    />
-
-                                    <path
-                                        d="
-                                            M19 6l-1 14H6L5 6
-                                        "
-                                    />
-
-                                    <path d="M10 11v5"/>
-
-                                    <path d="M14 11v5"/>
-
-                                </svg>
-
-                            </button>
-
+                        <div class="description">
+                            ${escapeHTML(
+                                group.description ||
+                                "Навчальна група"
+                            )}
                         </div>
 
                     </div>
 
-                `;
-            });
+                    <div class="arrow">
+                        ›
+                    </div>
 
+                </a>
 
-            enableDragAndDrop();
 
-            updateAdminUI();
-        }
+                <div class="group-actions">
 
+                    <button
+                        class="edit-btn"
+                        onclick="editGroup('${group.id}', event)"
+                    >
+                        ✎
+                    </button>
 
+                    <button
+                        class="delete-btn"
+                        onclick="deleteGroup('${group.id}', event)"
+                    >
+                        ×
+                    </button>
 
-        /* =========================
-           DRAG & DROP
-        ========================= */
+                </div>
 
-        function enableDragAndDrop() {
+            `;
 
-            const container =
-                document.getElementById("groups");
 
-
-            if (!container) return;
-
-
-            let dragged = null;
-
-            let startY = 0;
-
-            let draggingStarted = false;
-
-
-            container
-                .querySelectorAll(".group")
-                .forEach(card => {
-
-
-                    card.onpointerdown =
-                        function(event) {
-
-
-                            const isAdmin =
-                                document.body.dataset.admin === "true";
-
-
-                            if (!isAdmin) {
-                                return;
-                            }
-
-
-                            if (
-                                event.target.closest(
-                                    ".group-actions"
-                                )
-                            ) {
-                                return;
-                            }
-
-
-                            startY =
-                                event.clientY;
-
-
-                            draggingStarted =
-                                false;
-
-
-                            card.setPointerCapture(
-                                event.pointerId
-                            );
-
-
-                            card.onpointermove =
-                                function(moveEvent) {
-
-
-                                    const distance =
-                                        Math.abs(
-                                            moveEvent.clientY -
-                                            startY
-                                        );
-
-
-                                    if (
-                                        !draggingStarted &&
-                                        distance < 8
-                                    ) {
-                                        return;
-                                    }
-
-
-                                    draggingStarted =
-                                        true;
-
-
-                                    dragged =
-                                        card;
-
-
-                                    card.classList.add(
-                                        "dragging"
-                                    );
-
-
-                                    const cards =
-                                        [
-                                            ...container.querySelectorAll(
-                                                ".group:not(.dragging)"
-                                            )
-                                        ];
-
-
-                                    const nextCard =
-                                        cards.find(item => {
-
-                                            const rect =
-                                                item.getBoundingClientRect();
-
-
-                                            return (
-                                                moveEvent.clientY <
-                                                rect.top +
-                                                rect.height / 2
-                                            );
-
-                                        });
-
-
-                                    container
-                                        .querySelectorAll(
-                                            ".group"
-                                        )
-                                        .forEach(item => {
-
-                                            item.classList.remove(
-                                                "drag-over"
-                                            );
-
-                                        });
-
-
-                                    if (nextCard) {
-
-                                        nextCard.classList.add(
-                                            "drag-over"
-                                        );
-
-
-                                        container.insertBefore(
-                                            card,
-                                            nextCard
-                                        );
-
-                                    } else {
-
-                                        container.appendChild(
-                                            card
-                                        );
-
-                                    }
-
-                                };
-
-
-                            card.onpointerup =
-                                async function() {
-
-
-                                    card.releasePointerCapture(
-                                        event.pointerId
-                                    );
-
-
-                                    card.onpointermove =
-                                        null;
-
-
-                                    card.onpointerup =
-                                        null;
-
-
-                                    if (
-                                        !draggingStarted
-                                    ) {
-                                        return;
-                                    }
-
-
-                                    card.classList.remove(
-                                        "dragging"
-                                    );
-
-
-                                    container
-                                        .querySelectorAll(
-                                            ".group"
-                                        )
-                                        .forEach(item => {
-
-                                            item.classList.remove(
-                                                "drag-over"
-                                            );
-
-                                        });
-
-
-                                    await saveGroupOrder();
-
-                                };
-
-                        };
-
-                });
+            container.appendChild(
+                card
+            );
 
         }
+    );
 
 
+    updateAdminUI();
 
-        /* =========================
-           SAVE GROUP ORDER
-        ========================= */
+    enableDragAndDrop();
 
-        async function saveGroupOrder() {
-
-            const cards =
-                [
-                    ...document.querySelectorAll(
-                        "#groups .group"
-                    )
-                ];
+}
 
 
-            for (
-                let i = 0;
-                i < cards.length;
-                i++
-            ) {
+/* =========================
+   DRAG & DROP
+========================= */
 
-                const id =
-                    cards[i].dataset.id;
+function enableDragAndDrop() {
 
-
-                const { error } =
-                    await db
-                        .from("groups")
-                        .update({
-                            sort_order: i + 1
-                        })
-                        .eq("id", id);
+    const container =
+        document.getElementById("groups");
 
 
-                if (error) {
+    const cards =
+        container.querySelectorAll(".group");
 
-                    console.error(error);
 
-                    alert(
-                        "Не вдалося зберегти порядок груп."
+    let dragged = null;
+
+
+    cards.forEach(
+        function(card) {
+
+
+            card.addEventListener(
+                "pointerdown",
+                function(event) {
+
+                    if (
+                        document.body.dataset.admin !==
+                        "true"
+                    ) {
+                        return;
+                    }
+
+
+                    if (
+                        event.target.closest(
+                            ".group-actions"
+                        )
+                    ) {
+                        return;
+                    }
+
+
+                    dragged =
+                        card;
+
+
+                    card.classList.add(
+                        "dragging"
                     );
 
-                    return;
+
+                    card.setPointerCapture(
+                        event.pointerId
+                    );
+
                 }
+            );
 
-            }
 
-        }
+            card.addEventListener(
+                "pointermove",
+                function(event) {
 
+                    if (
+                        dragged !== card
+                    ) {
+                        return;
+                    }
 
 
-        /* =========================
-           SHOW ADD FORM
-        ========================= */
+                    const cardsNow =
+                        [
+                            ...container.querySelectorAll(
+                                ".group:not(.dragging)"
+                            )
+                        ];
 
-        function showAddForm() {
 
-            editingGroupId = null;
+                    const nextCard =
+                        cardsNow.find(
+                            function(item) {
 
+                                const rect =
+                                    item.getBoundingClientRect();
 
-            document.getElementById(
-                "groupModalTitle"
-            ).textContent =
-                "Додати групу";
 
+                                return (
+                                    event.clientY <
+                                    rect.top +
+                                    rect.height / 2
+                                );
 
-            document.getElementById(
-                "saveGroupButton"
-            ).textContent =
-                "Додати";
-
-
-            document.getElementById(
-                "groupName"
-            ).value = "";
-
-
-            document.getElementById(
-                "groupDescription"
-            ).value = "";
-
-
-            document.getElementById(
-                "groupLink"
-            ).value = "";
-
-
-            document.getElementById(
-                "overlay"
-            ).style.display =
-                "flex";
-
-
-            document.getElementById(
-                "groupName"
-            ).focus();
-
-        }
-
-
-
-        /* =========================
-           CLOSE FORM
-        ========================= */
-
-        function closeForm() {
-
-            document.getElementById(
-                "overlay"
-            ).style.display =
-                "none";
-
-
-            document.getElementById(
-                "groupName"
-            ).value = "";
-
-
-            document.getElementById(
-                "groupDescription"
-            ).value = "";
-
-
-            document.getElementById(
-                "groupLink"
-            ).value = "";
-
-
-            editingGroupId = null;
-
-        }
-
-
-
-        function closeOutside(event) {
-
-            if (
-                event.target ===
-                document.getElementById(
-                    "overlay"
-                )
-            ) {
-
-                closeForm();
-
-            }
-
-        }
-
-
-
-        /* =========================
-           SAVE GROUP
-        ========================= */
-
-        async function saveGroup() {
-
-            const name =
-                document.getElementById(
-                    "groupName"
-                ).value.trim();
-
-
-            const description =
-                document.getElementById(
-                    "groupDescription"
-                ).value.trim();
-
-
-            const link =
-                document.getElementById(
-                    "groupLink"
-                ).value.trim();
-
-
-            if (!name) {
-
-                alert(
-                    "Вкажіть назву групи."
-                );
-
-                return;
-            }
-
-
-            if (!link) {
-
-                alert(
-                    "Вкажіть посилання на Telegram-групу."
-                );
-
-                return;
-            }
-
-
-            if (
-                !link.startsWith(
-                    "https://t.me/"
-                )
-            ) {
-
-                alert(
-                    "Посилання має починатися з https://t.me/"
-                );
-
-                return;
-            }
-
-
-            let error;
-
-
-            if (editingGroupId) {
-
-
-                const result =
-                    await db
-                        .from("groups")
-                        .update({
-
-                            name: name,
-
-                            description:
-                                description ||
-                                "Навчальна група",
-
-                            telegram_link:
-                                link
-
-                        })
-                        .eq(
-                            "id",
-                            editingGroupId
+                            }
                         );
 
 
-                error =
-                    result.error;
+                    container
+                        .querySelectorAll(".group")
+                        .forEach(
+                            function(item) {
 
+                                item.classList.remove(
+                                    "drag-over"
+                                );
 
-            } else {
-
-
-                const { data: lastGroup } =
-                    await db
-                        .from("groups")
-                        .select(
-                            "sort_order"
-                        )
-                        .order(
-                            "sort_order",
-                            {
-                                ascending: false
                             }
-                        )
-                        .limit(1);
+                        );
 
 
-                const nextOrder =
-                    lastGroup &&
-                    lastGroup.length
-                        ? lastGroup[0].sort_order + 1
-                        : 1;
+                    if (nextCard) {
+
+                        nextCard.classList.add(
+                            "drag-over"
+                        );
+
+                        container.insertBefore(
+                            card,
+                            nextCard
+                        );
+
+                    } else {
+
+                        container.appendChild(
+                            card
+                        );
+
+                    }
+
+                }
+            );
 
 
-                const result =
-                    await db
-                        .from("groups")
-                        .insert({
+            card.addEventListener(
+                "pointerup",
+                async function(event) {
 
-                            name: name,
-
-                            description:
-                                description ||
-                                "Навчальна група",
-
-                            telegram_link:
-                                link,
-
-                            sort_order:
-                                nextOrder
-
-                        });
+                    if (
+                        dragged !== card
+                    ) {
+                        return;
+                    }
 
 
-                error =
-                    result.error;
+                    try {
 
-            }
+                        card.releasePointerCapture(
+                            event.pointerId
+                        );
 
-
-            if (error) {
-
-                console.error(error);
-
-                alert(
-                    "Помилка: " +
-                    error.message
-                );
-
-                return;
-            }
+                    } catch (_) {}
 
 
-            editingGroupId = null;
-
-
-            closeForm();
-
-
-            await loadGroups();
-
-        }
-
-
-
-        /* =========================
-           EDIT GROUP
-        ========================= */
-
-        async function editGroup(
-            id,
-            event
-        ) {
-
-            event.preventDefault();
-
-            event.stopPropagation();
-
-
-            editingGroupId =
-                id;
-
-
-            const {
-                data,
-                error
-            } =
-                await db
-                    .from("groups")
-                    .select(
-                        "id, name, description, telegram_link"
-                    )
-                    .eq(
-                        "id",
-                        id
-                    )
-                    .single();
-
-
-            if (error) {
-
-                console.error(error);
-
-                alert(
-                    "Помилка: " +
-                    error.message
-                );
-
-                return;
-            }
-
-
-            document.getElementById(
-                "groupModalTitle"
-            ).textContent =
-                "Редагувати групу";
-
-
-            document.getElementById(
-                "saveGroupButton"
-            ).textContent =
-                "Зберегти";
-
-
-            document.getElementById(
-                "groupName"
-            ).value =
-                data.name;
-
-
-            document.getElementById(
-                "groupDescription"
-            ).value =
-                data.description ||
-                "";
-
-
-            document.getElementById(
-                "groupLink"
-            ).value =
-                data.telegram_link;
-
-
-            document.getElementById(
-                "overlay"
-            ).style.display =
-                "flex";
-
-        }
-
-
-
-        /* =========================
-           DELETE GROUP
-        ========================= */
-
-        async function deleteGroup(
-            id,
-            event
-        ) {
-
-            event.preventDefault();
-
-            event.stopPropagation();
-
-
-            if (
-                !confirm(
-                    "Видалити цю групу з PARAMEDIC HUB?"
-                )
-            ) {
-
-                return;
-            }
-
-
-            const { error } =
-                await db
-                    .from("groups")
-                    .delete()
-                    .eq(
-                        "id",
-                        id
+                    card.classList.remove(
+                        "dragging"
                     );
 
 
-            if (error) {
+                    container
+                        .querySelectorAll(".group")
+                        .forEach(
+                            function(item) {
 
-                console.error(error);
+                                item.classList.remove(
+                                    "drag-over"
+                                );
 
-                alert(
-                    "Помилка: " +
-                    error.message
-                );
+                            }
+                        );
 
-                return;
-            }
+
+                    dragged = null;
+
+
+                    await saveGroupOrder();
+
+                }
+            );
+
+        }
+    );
+
+}
+
+
+/* =========================
+   SAVE ORDER
+========================= */
+
+async function saveGroupOrder() {
+
+    const cards =
+        [
+            ...document.querySelectorAll(
+                "#groups .group"
+            )
+        ];
+
+
+    for (
+        let i = 0;
+        i < cards.length;
+        i++
+    ) {
+
+        const id =
+            cards[i].dataset.id;
+
+
+        const {
+            error
+        } = await db
+            .from("groups")
+            .update({
+                sort_order: i + 1
+            })
+            .eq(
+                "id",
+                id
+            );
+
+
+        if (error) {
+
+            console.error(
+                "ORDER ERROR:",
+                error
+            );
+
+
+            showError(
+                "Порядок змінився на екрані, але не зберігся в базі: " +
+                error.message
+            );
 
 
             await loadGroups();
 
+            return;
         }
 
+    }
+
+}
 
 
-        /* =========================
-           ESCAPE HTML
-        ========================= */
+/* =========================
+   ADD FORM
+========================= */
 
-        function escapeHTML(text) {
+function showAddForm() {
 
-            const div =
-                document.createElement(
-                    "div"
+    editingGroupId = null;
+
+
+    document.getElementById(
+        "groupModalTitle"
+    ).textContent =
+        "Додати групу";
+
+
+    document.getElementById(
+        "saveGroupButton"
+    ).textContent =
+        "Додати";
+
+
+    document.getElementById(
+        "groupName"
+    ).value = "";
+
+
+    document.getElementById(
+        "groupDescription"
+    ).value = "";
+
+
+    document.getElementById(
+        "groupLink"
+    ).value = "";
+
+
+    document.getElementById(
+        "overlay"
+    ).style.display =
+        "flex";
+
+
+    document.getElementById(
+        "groupName"
+    ).focus();
+
+}
+
+
+/* =========================
+   CLOSE FORM
+========================= */
+
+function closeForm() {
+
+    document.getElementById(
+        "overlay"
+    ).style.display =
+        "none";
+
+
+    editingGroupId = null;
+
+}
+
+
+/* =========================
+   OUTSIDE CLICK
+========================= */
+
+function closeOutside(event) {
+
+    if (
+        event.target ===
+        document.getElementById(
+            "overlay"
+        )
+    ) {
+
+        closeForm();
+
+    }
+
+}
+
+
+/* =========================
+   SAVE GROUP
+========================= */
+
+async function saveGroup() {
+
+    const name =
+        document.getElementById(
+            "groupName"
+        ).value.trim();
+
+
+    const description =
+        document.getElementById(
+            "groupDescription"
+        ).value.trim();
+
+
+    const link =
+        document.getElementById(
+            "groupLink"
+        ).value.trim();
+
+
+    if (!name) {
+
+        alert(
+            "Вкажіть назву групи."
+        );
+
+        return;
+    }
+
+
+    if (!link) {
+
+        alert(
+            "Вкажіть посилання на Telegram-групу."
+        );
+
+        return;
+    }
+
+
+    if (
+        !link.startsWith(
+            "https://t.me/"
+        )
+    ) {
+
+        alert(
+            "Посилання має починатися з https://t.me/"
+        );
+
+        return;
+    }
+
+
+    let error;
+
+
+    if (editingGroupId) {
+
+
+        const result =
+            await db
+                .from("groups")
+                .update({
+
+                    name: name,
+
+                    description:
+                        description ||
+                        "Навчальна група",
+
+                    telegram_link:
+                        link
+
+                })
+                .eq(
+                    "id",
+                    editingGroupId
                 );
 
 
-            div.textContent =
-                text;
+        error =
+            result.error;
 
 
-            return div.innerHTML;
+    } else {
 
+
+        const {
+            data: lastGroup,
+            error: lastGroupError
+        } = await db
+            .from("groups")
+            .select(
+                "sort_order"
+            )
+            .order(
+                "sort_order",
+                {
+                    ascending: false
+                }
+            )
+            .limit(1);
+
+
+        if (lastGroupError) {
+
+            alert(
+                "Помилка визначення порядку: " +
+                lastGroupError.message
+            );
+
+            return;
         }
 
 
-
-        /* =========================
-           ADMIN LOGIN
-        ========================= */
-
-        async function adminLogin() {
-
-            const email =
-                document.getElementById(
-                    "adminEmail"
-                ).value.trim();
+        const nextOrder =
+            lastGroup &&
+            lastGroup.length
+                ? Number(
+                    lastGroup[0].sort_order
+                ) + 1
+                : 1;
 
 
-            const password =
-                document.getElementById(
-                    "adminPassword"
-                ).value;
+        const result =
+            await db
+                .from("groups")
+                .insert({
 
+                    name: name,
 
-            if (
-                !email ||
-                !password
-            ) {
+                    description:
+                        description ||
+                        "Навчальна група",
 
-                alert(
-                    "Введіть email і пароль."
-                );
+                    telegram_link:
+                        link,
 
-                return;
-            }
-
-
-            const { error } =
-                await db.auth.signInWithPassword({
-
-                    email: email,
-
-                    password: password
+                    sort_order:
+                        nextOrder
 
                 });
 
 
-            if (error) {
+        error =
+            result.error;
 
-                alert(
-                    "Неправильний email або пароль."
-                );
-
-                return;
-            }
+    }
 
 
-            closeAdminLogin();
+    if (error) {
+
+        console.error(
+            "SAVE GROUP ERROR:",
+            error
+        );
 
 
-            await updateAdminUI();
+        alert(
+            "Помилка: " +
+            error.message
+        );
+
+        return;
+    }
 
 
-            await loadGroups();
-
-        }
+    closeForm();
 
 
+    await loadGroups();
 
-        /* =========================
-           SHOW ADMIN LOGIN
-        ========================= */
-
-        function showAdminLogin() {
-
-            document.getElementById(
-                "adminOverlay"
-            ).style.display =
-                "flex";
+}
 
 
-            document.getElementById(
-                "adminEmail"
-            ).focus();
+/* =========================
+   EDIT GROUP
+========================= */
 
-        }
+async function editGroup(
+    id,
+    event
+) {
 
+    event.preventDefault();
 
-
-        /* =========================
-           CLOSE ADMIN LOGIN
-        ========================= */
-
-        function closeAdminLogin(event) {
-
-            if (
-                event &&
-                event.target !==
-                document.getElementById(
-                    "adminOverlay"
-                )
-            ) {
-
-                return;
-            }
+    event.stopPropagation();
 
 
-            document.getElementById(
-                "adminOverlay"
-            ).style.display =
-                "none";
+    const {
+        data,
+        error
+    } = await db
+        .from("groups")
+        .select(
+            "id, name, description, telegram_link"
+        )
+        .eq(
+            "id",
+            id
+        )
+        .single();
 
 
-            document.getElementById(
-                "adminEmail"
-            ).value = "";
+    if (error) {
+
+        alert(
+            "Помилка: " +
+            error.message
+        );
+
+        return;
+    }
 
 
-            document.getElementById(
-                "adminPassword"
-            ).value = "";
-
-        }
+    editingGroupId =
+        id;
 
 
-
-        /* =========================
-           ADMIN LOGOUT
-        ========================= */
-
-        async function adminLogout() {
-
-            await db.auth.signOut();
+    document.getElementById(
+        "groupModalTitle"
+    ).textContent =
+        "Редагувати групу";
 
 
-            await updateAdminUI();
+    document.getElementById(
+        "saveGroupButton"
+    ).textContent =
+        "Зберегти";
 
 
-            await loadGroups();
-
-        }
-
-
-
-        /* =========================
-           UPDATE ADMIN UI
-        ========================= */
-
-        async function updateAdminUI() {
-
-            const { data } =
-                await db.auth.getSession();
+    document.getElementById(
+        "groupName"
+    ).value =
+        data.name;
 
 
-            const isAdmin =
-                !!data.session;
+    document.getElementById(
+        "groupDescription"
+    ).value =
+        data.description || "";
 
 
-            document.body.dataset.admin =
-                isAdmin
-                    ? "true"
-                    : "false";
+    document.getElementById(
+        "groupLink"
+    ).value =
+        data.telegram_link;
 
 
-            const addButton =
-                document.querySelector(
-                    ".add-button-wrapper"
-                );
+    document.getElementById(
+        "overlay"
+    ).style.display =
+        "flex";
+
+}
 
 
-            const groupActions =
-                document.querySelectorAll(
-                    ".group-actions"
-                );
+/* =========================
+   DELETE GROUP
+========================= */
+
+async function deleteGroup(
+    id,
+    event
+) {
+
+    event.preventDefault();
+
+    event.stopPropagation();
 
 
-            const loginButton =
-                document.querySelector(
-                    'button[onclick="showAdminLogin()"]'
-                );
+    const confirmed =
+        confirm(
+            "Видалити цю групу з PARAMEDIC HUB?"
+        );
 
 
-            const logoutButton =
-                document.getElementById(
-                    "adminLogout"
-                );
+    if (!confirmed) {
+        return;
+    }
 
 
-            if (addButton) {
+    const {
+        error
+    } = await db
+        .from("groups")
+        .delete()
+        .eq(
+            "id",
+            id
+        );
 
-                addButton.style.display =
+
+    if (error) {
+
+        alert(
+            "Помилка: " +
+            error.message
+        );
+
+        return;
+    }
+
+
+    await loadGroups();
+
+}
+
+
+/* =========================
+   ESCAPE HTML
+========================= */
+
+function escapeHTML(text) {
+
+    const div =
+        document.createElement(
+            "div"
+        );
+
+
+    div.textContent =
+        text;
+
+
+    return div.innerHTML;
+
+}
+
+
+function escapeAttribute(text) {
+
+    return String(text)
+        .replaceAll("&", "&amp;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;");
+
+}
+
+
+/* =========================
+   ADMIN LOGIN
+========================= */
+
+async function adminLogin() {
+
+    const email =
+        document.getElementById(
+            "adminEmail"
+        ).value.trim();
+
+
+    const password =
+        document.getElementById(
+            "adminPassword"
+        ).value;
+
+
+    if (
+        !email ||
+        !password
+    ) {
+
+        alert(
+            "Введіть email і пароль."
+        );
+
+        return;
+    }
+
+
+    const {
+        error
+    } =
+        await db.auth.signInWithPassword({
+
+            email: email,
+
+            password: password
+
+        });
+
+
+    if (error) {
+
+        alert(
+            "Неправильний email або пароль."
+        );
+
+        return;
+    }
+
+
+    closeAdminLogin();
+
+    await updateAdminUI();
+
+    await loadGroups();
+
+}
+
+
+/* =========================
+   SHOW LOGIN
+========================= */
+
+function showAdminLogin() {
+
+    document.getElementById(
+        "adminOverlay"
+    ).style.display =
+        "flex";
+
+
+    document.getElementById(
+        "adminEmail"
+    ).focus();
+
+}
+
+
+/* =========================
+   CLOSE LOGIN
+========================= */
+
+function closeAdminLogin(event) {
+
+    if (
+        event &&
+        event.target !==
+        document.getElementById(
+            "adminOverlay"
+        )
+    ) {
+
+        return;
+    }
+
+
+    document.getElementById(
+        "adminOverlay"
+    ).style.display =
+        "none";
+
+
+    document.getElementById(
+        "adminEmail"
+    ).value = "";
+
+
+    document.getElementById(
+        "adminPassword"
+    ).value = "";
+
+}
+
+
+/* =========================
+   LOGOUT
+========================= */
+
+async function adminLogout() {
+
+    await db.auth.signOut();
+
+    await updateAdminUI();
+
+    await loadGroups();
+
+}
+
+
+/* =========================
+   ADMIN UI
+========================= */
+
+async function updateAdminUI() {
+
+    const {
+        data
+    } =
+        await db.auth.getSession();
+
+
+    const isAdmin =
+        !!data.session;
+
+
+    document.body.dataset.admin =
+        isAdmin
+            ? "true"
+            : "false";
+
+
+    document.getElementById(
+        "addButtonWrapper"
+    ).style.display =
+        isAdmin
+            ? "flex"
+            : "none";
+
+
+    document.getElementById(
+        "loginWrapper"
+    ).style.display =
+        isAdmin
+            ? "none"
+            : "block";
+
+
+    document.getElementById(
+        "logoutWrapper"
+    ).style.display =
+        isAdmin
+            ? "block"
+            : "none";
+
+
+    document
+        .querySelectorAll(
+            ".group-actions"
+        )
+        .forEach(
+            function(element) {
+
+                element.style.display =
                     isAdmin
                         ? "flex"
                         : "none";
 
             }
-
-
-            groupActions.forEach(
-                function(element) {
-
-                    element.style.display =
-                        isAdmin
-                            ? "flex"
-                            : "none";
-
-                }
-            );
-
-
-            if (loginButton) {
-
-                loginButton.style.display =
-                    isAdmin
-                        ? "none"
-                        : "inline-block";
-
-            }
-
-
-            if (logoutButton) {
-
-                logoutButton.style.display =
-                    isAdmin
-                        ? "block"
-                        : "none";
-
-            }
-
-        }
-
-
-
-        /* =========================
-           AUTH STATE
-        ========================= */
-
-        db.auth.onAuthStateChange(
-            function() {
-
-                updateAdminUI();
-
-            }
         );
 
+}
 
 
-        /* =========================
-           START
-        ========================= */
+/* =========================
+   AUTH STATE
+========================= */
 
-        loadGroups();
+db.auth.onAuthStateChange(
+    function() {
 
-    </script>
+        updateAdminUI();
+
+    }
+);
+
+
+/* =========================
+   START
+========================= */
+
+(async function() {
+
+    await updateAdminUI();
+
+    await loadGroups();
+
+})();
+
+</script>
 
 
 </body>
