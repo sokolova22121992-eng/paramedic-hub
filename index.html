@@ -19,9 +19,7 @@
         }
 
         body {
-
             margin: 0;
-
             font-family:
                 -apple-system,
                 BlinkMacSystemFont,
@@ -29,167 +27,83 @@
                 Roboto,
                 Arial,
                 sans-serif;
-
             background: #F5F6F7;
-
             color: #20252A;
         }
 
-
-        /* =========================
-           CONTAINER
-        ========================= */
-
         .container {
-
             width: 100%;
-
             max-width: 760px;
-
             margin: 0 auto;
-
-            padding:
-                32px
-                18px
-                50px;
+            padding: 32px 18px 50px;
         }
 
-
-        /* =========================
-           HEADER
-        ========================= */
-
         .header {
-
             margin-bottom: 32px;
         }
 
         .logo {
-
             font-size: 14px;
-
             font-weight: 800;
-
             letter-spacing: 2.5px;
-
             color: #167C78;
-
             margin-bottom: 4px;
         }
 
         h1 {
-
             margin: 0;
-
             font-size: 38px;
-
             line-height: 1;
-
             font-weight: 800;
-
             letter-spacing: -1.5px;
         }
 
         .subtitle {
-
             margin-top: 10px;
-
             font-size: 14px;
-
             color: #7A838B;
         }
-
-
-        /* =========================
-           SECTION
-        ========================= */
 
         .section-title {
-
             margin-bottom: 12px;
-
             font-size: 12px;
-
             font-weight: 800;
-
             letter-spacing: 1px;
-
             text-transform: uppercase;
-
             color: #7A838B;
         }
 
-
-        /* =========================
-           ERROR
-        ========================= */
-
         .error {
-
             display: none;
-
             margin-bottom: 15px;
-
             padding: 14px;
-
             border-radius: 12px;
-
             background: #FDECEC;
-
             border: 1px solid #F2C7C7;
-
             color: #9B3D3D;
-
             font-size: 13px;
-
             line-height: 1.4;
         }
 
-
-        /* =========================
-           GROUPS
-        ========================= */
-
         .groups {
-
             display: flex;
-
             flex-direction: column;
-
             gap: 8px;
         }
 
-
-        /* =========================
-           GROUP CARD
-        ========================= */
-
         .group {
-
             display: flex;
-
             align-items: center;
-
             width: 100%;
-
             padding: 6px 10px;
-
             background: #FFFFFF;
-
             border: 1px solid #E7EAEC;
-
             border-radius: 12px;
-
             color: #20252A;
-
             box-shadow:
-                0 2px 6px
-                rgba(0, 0, 0, 0.035);
-
+                0 2px 6px rgba(0, 0, 0, 0.035);
             user-select: none;
-
             touch-action: pan-y;
-
             transition:
                 transform 0.15s ease,
                 opacity 0.15s ease,
@@ -197,446 +111,247 @@
         }
 
         .group.dragging {
-
             opacity: 0.45;
-
             transform: scale(1.02);
         }
 
         .group.drag-over {
-
-            border-top:
-                3px solid #167C78;
+            border-top: 3px solid #167C78;
         }
 
-
-        /* =========================
-           GROUP MAIN
-        ========================= */
-
         .group-main {
-
             display: flex;
-
             align-items: center;
-
             gap: 9px;
-
             flex: 1;
-
             min-width: 0;
-
             text-decoration: none;
-
             color: inherit;
         }
 
-
-        /* =========================
-           ICON
-        ========================= */
-
         .group-icon {
-
             width: 32px;
-
             height: 32px;
-
             min-width: 32px;
-
             border-radius: 8px;
-
             display: flex;
-
             align-items: center;
-
             justify-content: center;
-
             background: #E8F4F3;
-
             font-size: 16px;
         }
 
-
-        /* =========================
-           TEXT
-        ========================= */
-
         .group-info {
-
             flex: 1;
-
             min-width: 0;
         }
 
         .name {
-
             font-size: 15px;
-
             font-weight: 750;
-
             line-height: 1.1;
-
             margin-bottom: 1px;
         }
 
         .description {
-
             font-size: 12px;
-
             color: #7A838B;
-
             line-height: 1.15;
         }
 
-
-        /* =========================
-           ARROW
-        ========================= */
-
         .arrow {
-
             font-size: 19px;
-
             color: #A1A8AD;
-
             line-height: 1;
         }
 
-
-        /* =========================
-           ADMIN ACTIONS
-        ========================= */
-
         .group-actions {
-
             display: none;
-
             align-items: center;
-
             gap: 4px;
-
             margin-left: 5px;
         }
 
         .group-actions button {
-
             width: 28px;
-
             height: 28px;
-
             padding: 0;
-
-            border:
-                1px solid #E1E5E7;
-
+            border: 1px solid #E1E5E7;
             border-radius: 7px;
-
             background: #FFFFFF;
-
             display: flex;
-
             align-items: center;
-
             justify-content: center;
-
             cursor: pointer;
-        }
-
-        .group-actions button:hover {
-
-            background: #F3F5F6;
+            font-size: 18px;
         }
 
         .edit-btn {
-
             color: #167C78;
         }
 
         .delete-btn {
-
             color: #B44A4A;
         }
 
-
-        /* =========================
-           ADD BUTTON
-        ========================= */
-
         .add-button-wrapper {
-
             display: none;
-
             justify-content: center;
-
             margin-top: 20px;
         }
 
         .add {
-
             height: 50px;
-
             padding: 0 26px;
-
             border: none;
-
             border-radius: 13px;
-
             background: #167C78;
-
             color: #FFFFFF;
-
             font-size: 15px;
-
             font-weight: 700;
-
             font-family: inherit;
-
             cursor: pointer;
         }
 
         .add:hover {
-
             background: #126A67;
         }
 
-
-        /* =========================
-           LOGIN
-        ========================= */
-
         .login-wrapper {
-
             text-align: center;
-
             margin-top: 18px;
         }
 
         .login-button,
         .logout-button {
-
             background: none;
-
             border: none;
-
             color: #7A838B;
-
             font-size: 13px;
-
             cursor: pointer;
-
             font-family: inherit;
         }
 
         .logout-wrapper {
-
             display: none;
-
             text-align: center;
-
             margin-top: 8px;
         }
 
-
-        /* =========================
-           MODAL
-        ========================= */
-
         .overlay {
-
             display: none;
-
             position: fixed;
-
             inset: 0;
-
             z-index: 100;
-
             align-items: center;
-
             justify-content: center;
-
             padding: 20px;
-
-            background:
-                rgba(20, 25, 28, 0.48);
+            background: rgba(20, 25, 28, 0.48);
         }
 
         .modal {
-
             width: 100%;
-
             max-width: 470px;
-
             padding: 24px;
-
             background: #FFFFFF;
-
             border-radius: 20px;
-
             box-shadow:
-                0 20px 60px
-                rgba(0, 0, 0, 0.18);
+                0 20px 60px rgba(0, 0, 0, 0.18);
         }
 
         .modal h2 {
-
-            margin:
-                0 0 7px;
-
+            margin: 0 0 7px;
             font-size: 22px;
         }
 
         .modal-description {
-
-            margin:
-                0 0 20px;
-
+            margin: 0 0 20px;
             font-size: 13px;
-
             line-height: 1.45;
-
             color: #7A838B;
         }
 
-
-        /* =========================
-           FORM
-        ========================= */
-
         label {
-
             display: block;
-
             margin-bottom: 6px;
-
             font-size: 13px;
-
             font-weight: 700;
-
             color: #4F585E;
         }
 
         input {
-
             width: 100%;
-
             height: 46px;
-
             margin-bottom: 15px;
-
-            padding:
-                0 13px;
-
-            border:
-                1px solid #D9DEE0;
-
+            padding: 0 13px;
+            border: 1px solid #D9DEE0;
             border-radius: 11px;
-
             background: #FFFFFF;
-
             color: #20252A;
-
             font-family: inherit;
-
             font-size: 14px;
-
             outline: none;
         }
 
         input:focus {
-
             border-color: #167C78;
-
             box-shadow:
-                0 0 0 3px
-                rgba(22, 124, 120, 0.08);
+                0 0 0 3px rgba(22, 124, 120, 0.08);
         }
 
-
-        /* =========================
-           MODAL BUTTONS
-        ========================= */
-
         .modal-buttons {
-
             display: flex;
-
             gap: 10px;
-
             margin-top: 5px;
         }
 
         .cancel,
         .save {
-
             flex: 1;
-
             height: 46px;
-
             border: none;
-
             border-radius: 11px;
-
             font-family: inherit;
-
             font-size: 14px;
-
             font-weight: 700;
-
             cursor: pointer;
         }
 
         .cancel {
-
             background: #EEF0F1;
-
             color: #596168;
         }
 
         .save {
-
             background: #167C78;
-
             color: #FFFFFF;
         }
 
-
-        /* =========================
-           MOBILE
-        ========================= */
+        .save:hover {
+            background: #126A67;
+        }
 
         @media (max-width: 500px) {
 
             .container {
-
-                padding:
-                    26px
-                    14px
-                    40px;
+                padding: 26px 14px 40px;
             }
 
             h1 {
-
                 font-size: 34px;
             }
 
             .group {
-
                 padding: 12px;
             }
 
             .group-icon {
-
                 width: 40px;
-
                 height: 40px;
-
                 min-width: 40px;
             }
 
             .modal {
-
                 padding: 20px;
             }
 
@@ -652,8 +367,6 @@
 
 <main class="container">
 
-
-    <!-- HEADER -->
 
     <header class="header">
 
@@ -672,8 +385,6 @@
     </header>
 
 
-    <!-- GROUPS -->
-
     <div class="section-title">
         Навчальні групи
     </div>
@@ -691,8 +402,6 @@
     ></div>
 
 
-    <!-- ADD -->
-
     <div
         id="addButtonWrapper"
         class="add-button-wrapper"
@@ -708,8 +417,6 @@
     </div>
 
 
-    <!-- LOGIN -->
-
     <div
         id="loginWrapper"
         class="login-wrapper"
@@ -724,8 +431,6 @@
 
     </div>
 
-
-    <!-- LOGOUT -->
 
     <div
         id="logoutWrapper"
@@ -747,7 +452,7 @@
 
 
 <!-- =========================
-     ADD / EDIT MODAL
+     ADD / EDIT
 ========================= -->
 
 <div
@@ -927,7 +632,7 @@ let editingGroupId = null;
 
 
 /* =========================
-   ERROR MESSAGE
+   ERROR
 ========================= */
 
 function showError(message) {
@@ -975,7 +680,7 @@ async function loadGroups() {
         data,
         error
     } = await db
-        .from("groups")
+        .from("group")
         .select(
             "id, name, description, telegram_link, sort_order"
         )
@@ -1003,11 +708,24 @@ async function loadGroups() {
     }
 
 
-    if (!data) {
+    if (!data || data.length === 0) {
 
-        showError(
-            "Supabase не повернув список груп."
-        );
+        container.innerHTML = `
+            <div
+                style="
+                    padding:20px;
+                    text-align:center;
+                    color:#7A838B;
+                    background:#FFFFFF;
+                    border-radius:12px;
+                    border:1px solid #E7EAEC;
+                "
+            >
+                Навчальних груп поки немає.
+            </div>
+        `;
+
+        updateAdminUI();
 
         return;
     }
@@ -1028,69 +746,116 @@ async function loadGroups() {
                 group.id;
 
 
-            card.innerHTML = `
+            const main =
+                document.createElement("a");
 
-                <a
-                    class="group-main"
-                    href="${escapeAttribute(
-                        group.telegram_link
-                    )}"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
 
-                    <div class="group-icon">
-                        👥
+            main.className =
+                "group-main";
+
+
+            main.href =
+                group.telegram_link;
+
+
+            main.target =
+                "_blank";
+
+
+            main.rel =
+                "noopener noreferrer";
+
+
+            main.innerHTML = `
+
+                <div class="group-icon">
+                    👥
+                </div>
+
+                <div class="group-info">
+
+                    <div class="name">
+                        ${escapeHTML(group.name)}
                     </div>
 
-                    <div class="group-info">
-
-                        <div class="name">
-                            ${escapeHTML(
-                                group.name
-                            )}
-                        </div>
-
-                        <div class="description">
-                            ${escapeHTML(
-                                group.description ||
-                                "Навчальна група"
-                            )}
-                        </div>
-
+                    <div class="description">
+                        ${escapeHTML(
+                            group.description ||
+                            "Навчальна група"
+                        )}
                     </div>
 
-                    <div class="arrow">
-                        ›
-                    </div>
+                </div>
 
-                </a>
-
-
-                <div class="group-actions">
-
-                    <button
-                        class="edit-btn"
-                        onclick="editGroup('${group.id}', event)"
-                    >
-                        ✎
-                    </button>
-
-                    <button
-                        class="delete-btn"
-                        onclick="deleteGroup('${group.id}', event)"
-                    >
-                        ×
-                    </button>
-
+                <div class="arrow">
+                    ›
                 </div>
 
             `;
 
 
-            container.appendChild(
-                card
-            );
+            const actions =
+                document.createElement("div");
+
+
+            actions.className =
+                "group-actions";
+
+
+            actions.innerHTML = `
+
+                <button
+                    class="edit-btn"
+                    title="Редагувати"
+                >
+                    ✎
+                </button>
+
+                <button
+                    class="delete-btn"
+                    title="Видалити"
+                >
+                    ×
+                </button>
+
+            `;
+
+
+            actions
+                .querySelector(".edit-btn")
+                .addEventListener(
+                    "click",
+                    function(event) {
+
+                        editGroup(
+                            group.id,
+                            event
+                        );
+
+                    }
+                );
+
+
+            actions
+                .querySelector(".delete-btn")
+                .addEventListener(
+                    "click",
+                    function(event) {
+
+                        deleteGroup(
+                            group.id,
+                            event
+                        );
+
+                    }
+                );
+
+
+            card.appendChild(main);
+
+            card.appendChild(actions);
+
+            container.appendChild(card);
 
         }
     );
@@ -1154,9 +919,13 @@ function enableDragAndDrop() {
                     );
 
 
-                    card.setPointerCapture(
-                        event.pointerId
-                    );
+                    try {
+
+                        card.setPointerCapture(
+                            event.pointerId
+                        );
+
+                    } catch (_) {}
 
                 }
             );
@@ -1173,7 +942,7 @@ function enableDragAndDrop() {
                     }
 
 
-                    const cardsNow =
+                    const others =
                         [
                             ...container.querySelectorAll(
                                 ".group:not(.dragging)"
@@ -1181,8 +950,8 @@ function enableDragAndDrop() {
                         ];
 
 
-                    const nextCard =
-                        cardsNow.find(
+                    const next =
+                        others.find(
                             function(item) {
 
                                 const rect =
@@ -1212,15 +981,16 @@ function enableDragAndDrop() {
                         );
 
 
-                    if (nextCard) {
+                    if (next) {
 
-                        nextCard.classList.add(
+                        next.classList.add(
                             "drag-over"
                         );
 
+
                         container.insertBefore(
                             card,
-                            nextCard
+                            next
                         );
 
                     } else {
@@ -1314,7 +1084,7 @@ async function saveGroupOrder() {
         const {
             error
         } = await db
-            .from("groups")
+            .from("group")
             .update({
                 sort_order: i + 1
             })
@@ -1327,13 +1097,13 @@ async function saveGroupOrder() {
         if (error) {
 
             console.error(
-                "ORDER ERROR:",
+                "SAVE ORDER ERROR:",
                 error
             );
 
 
             showError(
-                "Порядок змінився на екрані, але не зберігся в базі: " +
+                "Не вдалося зберегти порядок груп: " +
                 error.message
             );
 
@@ -1422,9 +1192,7 @@ function closeOutside(event) {
 
     if (
         event.target ===
-        document.getElementById(
-            "overlay"
-        )
+        document.getElementById("overlay")
     ) {
 
         closeForm();
@@ -1497,10 +1265,9 @@ async function saveGroup() {
 
     if (editingGroupId) {
 
-
         const result =
             await db
-                .from("groups")
+                .from("group")
                 .update({
 
                     name: name,
@@ -1522,7 +1289,6 @@ async function saveGroup() {
         error =
             result.error;
 
-
     } else {
 
 
@@ -1530,7 +1296,7 @@ async function saveGroup() {
             data: lastGroup,
             error: lastGroupError
         } = await db
-            .from("groups")
+            .from("group")
             .select(
                 "sort_order"
             )
@@ -1546,7 +1312,7 @@ async function saveGroup() {
         if (lastGroupError) {
 
             alert(
-                "Помилка визначення порядку: " +
+                "Не вдалося визначити порядок груп: " +
                 lastGroupError.message
             );
 
@@ -1565,7 +1331,7 @@ async function saveGroup() {
 
         const result =
             await db
-                .from("groups")
+                .from("group")
                 .insert({
 
                     name: name,
@@ -1608,7 +1374,6 @@ async function saveGroup() {
 
     closeForm();
 
-
     await loadGroups();
 
 }
@@ -1632,7 +1397,7 @@ async function editGroup(
         data,
         error
     } = await db
-        .from("groups")
+        .from("group")
         .select(
             "id, name, description, telegram_link"
         )
@@ -1710,13 +1475,11 @@ async function deleteGroup(
     event.stopPropagation();
 
 
-    const confirmed =
-        confirm(
+    if (
+        !confirm(
             "Видалити цю групу з PARAMEDIC HUB?"
-        );
-
-
-    if (!confirmed) {
+        )
+    ) {
         return;
     }
 
@@ -1724,7 +1487,7 @@ async function deleteGroup(
     const {
         error
     } = await db
-        .from("groups")
+        .from("group")
         .delete()
         .eq(
             "id",
@@ -1749,7 +1512,7 @@ async function deleteGroup(
 
 
 /* =========================
-   ESCAPE HTML
+   ESCAPE
 ========================= */
 
 function escapeHTML(text) {
@@ -1765,17 +1528,6 @@ function escapeHTML(text) {
 
 
     return div.innerHTML;
-
-}
-
-
-function escapeAttribute(text) {
-
-    return String(text)
-        .replaceAll("&", "&amp;")
-        .replaceAll('"', "&quot;")
-        .replaceAll("<", "&lt;")
-        .replaceAll(">", "&gt;");
 
 }
 
@@ -1977,7 +1729,7 @@ async function updateAdminUI() {
 
 
 /* =========================
-   AUTH STATE
+   AUTH
 ========================= */
 
 db.auth.onAuthStateChange(
