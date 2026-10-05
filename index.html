@@ -903,83 +903,56 @@ async function loadGroups() {
 
 function enableDragAndDrop() {
     const container = document.getElementById("groups");
-    const cards = container.querySelectorAll(".group");
+const cards = [...container.querySelectorAll(".group")];
 
-    let dragged = null;
+if (document.body.dataset.admin !== "true") return;
 
-    cards.forEach(function(card) {
+cards.forEach(function(card, index) {
 
-        // Робимо окрему область для перетягування
-        const handle = document.createElement("div");
+    if (card.querySelector(".sort-controls")) return;
 
-        handle.innerHTML = "⠿";
-        handle.className = "drag-handle";
-        handle.title = "Перемістити групу";
+    const controls = document.createElement("div");
 
-        card.prepend(handle);
+    controls.className = "sort-controls";
 
-        handle.addEventListener("pointerdown", function(event) {
-            if (document.body.dataset.admin !== "true") return;
+    controls.innerHTML = `
+        <button type="button" class="sort-up" ${index === 0 ? "disabled" : ""}>↑</button>
+        <button type="button" class="sort-down" ${index === cards.length - 1 ? "disabled" : ""}>↓</button>
+    `;
 
-            event.preventDefault();
-            event.stopPropagation();
+    card.appendChild(controls);
 
-            dragged = card;
+    controls.querySelector(".sort-up").addEventListener("click", async function(event) {
+        event.preventDefault();
+        event.stopPropagation();
 
-            card.classList.add("dragging");
+        const previous = card.previousElementSibling;
 
-            try {
-                handle.setPointerCapture(event.pointerId);
-            } catch (_) {}
-        });
+        if (!previous) return;
 
-        handle.addEventListener("pointermove", function(event) {
-            if (dragged !== card) return;
+        container.insertBefore(card, previous);
 
-            event.preventDefault();
+        await saveGroupOrder();
 
-            const others = [
-                ...container.querySelectorAll(".group:not(.dragging)")
-            ];
-
-            const next = others.find(function(item) {
-                const rect = item.getBoundingClientRect();
-
-                return event.clientY < rect.top + rect.height / 2;
-            });
-
-            container.querySelectorAll(".group").forEach(function(item) {
-                item.classList.remove("drag-over");
-            });
-
-            if (next) {
-                next.classList.add("drag-over");
-                container.insertBefore(card, next);
-            } else {
-                container.appendChild(card);
-            }
-        });
-
-        handle.addEventListener("pointerup", async function(event) {
-            if (dragged !== card) return;
-
-            try {
-                handle.releasePointerCapture(event.pointerId);
-            } catch (_) {}
-
-            card.classList.remove("dragging");
-
-            container.querySelectorAll(".group").forEach(function(item) {
-                item.classList.remove("drag-over");
-            });
-
-            dragged = null;
-
-            await saveGroupOrder();
-        });
+        location.reload();
     });
-}
 
+    controls.querySelector(".sort-down").addEventListener("click", async function(event) {
+        event.preventDefault();
+        event.stopPropagation();
+
+        const next = card.nextElementSibling;
+
+        if (!next) return;
+
+        container.insertBefore(next, card);
+
+        await saveGroupOrder();
+
+        location.reload();
+    });
+});
+}
 
 /* =========================
    SAVE ORDER
