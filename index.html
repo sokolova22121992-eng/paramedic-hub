@@ -1365,18 +1365,17 @@ async function saveGroup() {
     }
 
 
-    if (
-        !link.startsWith(
-            "https://t.me/"
-        )
-    ) {
+if (
+    !link.startsWith("https://t.me/") &&
+    !link.startsWith("https://invite.viber.com/")
+) {
 
-        alert(
-            "Посилання має починатися з https://t.me/"
-        );
+    alert(
+        "Вкажіть коректне посилання на Telegram або Viber-групу."
+    );
 
-        return;
-    }
+    return;
+}
 
 
     let error;
